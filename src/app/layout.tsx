@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Sidebar } from "@/components/layout/sidebar";
+// Ganti import Sidebar ke Navbar
+import { Navbar } from "@/components/layout/navbar";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 
 const geistSans = Geist({
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Riski | Fullstack & Security Enthusiast",
+  title: "Riski | Software Engineer",
   description:
     "Portfolio of a TRKJ Student specialized in Flutter, Next.js, and Cyber Security.",
 };
@@ -36,12 +37,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col md:flex-row">
-            {/* Sidebar di kiri (Hidden di HP, Muncul di Desktop) */}
-            <Sidebar />
+          <div className="flex min-h-screen flex-col relative">
+            <Navbar />
 
-            {/* Konten Utama di kanan */}
-            <main className="flex-1 md:pl-[280px]">{children}</main>
+            {/* PERUBAHAN DISINI: max-w-7xl agar konten LEBAR */}
+            <main className="flex-1 w-full max-w-7xl mx-auto px-6 md:px-8 pt-24 pb-12">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>

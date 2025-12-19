@@ -13,7 +13,7 @@ export const RESUME_DATA = {
   personalWebsiteUrl: "https://riski.dev",
   cvUrl: "/cv_riski_fullstack.pdf",
   contact: {
-    email: "riski@example.com",
+    email: "riskideveloper2@gmail.com",
     tel: "+628123456789",
     social: [
       {
