@@ -1,64 +1,53 @@
 import { RESUME_DATA } from "@/data/resume";
-import { Button } from "@/components/ui/button";
-import { Mail, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="border-t border-zinc-800 bg-zinc-950/50 backdrop-blur-xl mt-24">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:py-16 lg:px-8">
-        <div className="flex flex-col items-center text-center space-y-8">
-          {/* 1. Heading CTA */}
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl">
-              Ready to collaborate?
-            </h2>
-            <p className="text-zinc-400 max-w-xl mx-auto">
-              I'm currently open for internship and freelance opportunities.
-              Let's build something amazing together.
-            </p>
-          </div>
+    <footer className="w-full bg-zinc-950 pt-8 pb-8">
+      {/* Garis Pemisah Emerald Tipis (Gap) */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent mb-8" />
 
-          {/* 2. Tombol Email Besar */}
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-zinc-950 font-bold px-8 h-12"
+      <div className="max-w-7xl mx-auto px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Navigasi Simpel */}
+        <nav className="flex gap-6 text-sm font-medium text-zinc-400">
+          <Link href="/" className="hover:text-emerald-400 transition-colors">
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className="hover:text-emerald-400 transition-colors"
           >
-            <Link href={`mailto:${RESUME_DATA.contact.email}`}>
-              <Mail className="mr-2 h-4 w-4" />
-              Get in Touch
-            </Link>
-          </Button>
+            Profile
+          </Link>
+          <Link
+            href="/projects"
+            className="hover:text-emerald-400 transition-colors"
+          >
+            Portfolio
+          </Link>
+        </nav>
 
-          {/* 3. Social Links Grid */}
-          <div className="flex gap-6 mt-8">
-            {RESUME_DATA.contact.social.map((social) => (
-              <Link
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                className="text-zinc-400 hover:text-emerald-500 transition-colors flex items-center gap-1 text-sm font-medium"
-              >
-                {social.name}
-                <ArrowUpRight className="h-3 w-3" />
-              </Link>
-            ))}
-          </div>
+        {/* Social Icons (Ambil dari RESUME_DATA) */}
+        <div className="flex items-center gap-4">
+          {RESUME_DATA.contact.social.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-zinc-400 hover:text-emerald-400 transition-colors"
+              aria-label={social.name}
+            >
+              <social.icon className="h-5 w-5" />
+            </a>
+          ))}
         </div>
+      </div>
 
-        {/* 4. Copyright & Credits */}
-        <div className="mt-16 border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-zinc-500">
-            &copy; {currentYear} {RESUME_DATA.name}. All rights reserved.
-          </p>
-          <p className="text-xs text-zinc-600 flex items-center gap-1">
-            Built with <span className="text-emerald-500">Next.js</span> &{" "}
-            <span className="text-emerald-500">Tailwind</span>
-          </p>
-        </div>
+      {/* Copyright Centered */}
+      <div className="text-center mt-8 text-xs text-zinc-600 font-mono">
+        &copy; {new Date().getFullYear()} {RESUME_DATA.name}. All rights
+        reserved.
       </div>
     </footer>
   );

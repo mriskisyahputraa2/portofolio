@@ -4,7 +4,7 @@ export const RESUME_DATA = {
   name: "Riski",
   initials: "RS",
   location: "Lhokseumawe, Aceh, ID",
-  locationLink: "https://www.google.com/maps/place/Lhokseumawe",
+  locationLink: "https://maps.app.goo.gl/CqbzMxSKi8z591qB9",
   about:
     "Student at Politeknik Negeri Lhokseumawe (TRKJ). Software Engineer focused on building integrated Web & Mobile ecosystems.",
   summary:
@@ -18,12 +18,12 @@ export const RESUME_DATA = {
     social: [
       {
         name: "GitHub",
-        url: "https://github.com/riski",
+        url: "https://github.com/mriskisyahputraa2",
         icon: Code,
       },
       {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/riski/",
+        url: "https://www.linkedin.com/in/muhammad-rizki-syahputraaa/",
         icon: Globe,
       },
     ],
@@ -33,7 +33,7 @@ export const RESUME_DATA = {
     "React",
     "Laravel",
     "Flutter",
-    "Inertia.js", // Tambahan skill relevan
+    "Inertia.js",
     "MySQL",
     "Tailwind CSS",
     "Docker",

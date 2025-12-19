@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer"; // 1. Import Footer
+import { Footer } from "@/components/layout/footer"; // Import Footer (Default import)
 import { ThemeProvider } from "@/components/shared/theme-provider";
 
 const geistSans = Geist({
@@ -37,14 +37,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* Wrapper utama menggunakan Flex Column agar Footer selalu di bawah */}
           <div className="flex min-h-screen flex-col relative">
+            {/* 1. Navbar (Fixed/Floating) */}
             <Navbar />
 
+            {/* 2. Main Content (Responsive Container) */}
+            {/* Padding top (pt-24) disesuaikan agar tidak tertutup Navbar */}
             <main className="flex-1 w-full max-w-7xl mx-auto px-6 md:px-8 pt-24 pb-12">
               {children}
             </main>
 
-            {/* 2. Pasang Footer Disini */}
+            {/* 3. Footer (Global) */}
             <Footer />
           </div>
         </ThemeProvider>
