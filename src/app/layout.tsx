@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// Ganti import Sidebar ke Navbar
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer"; // 1. Import Footer
 import { ThemeProvider } from "@/components/shared/theme-provider";
 
 const geistSans = Geist({
@@ -40,10 +40,12 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col relative">
             <Navbar />
 
-            {/* PERUBAHAN DISINI: max-w-7xl agar konten LEBAR */}
             <main className="flex-1 w-full max-w-7xl mx-auto px-6 md:px-8 pt-24 pb-12">
               {children}
             </main>
+
+            {/* 2. Pasang Footer Disini */}
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
