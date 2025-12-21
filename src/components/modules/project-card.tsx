@@ -1,60 +1,93 @@
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { ArrowUpRight } from "lucide-react"; // Icon panah
 import Link from "next/link";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+// Import Icon Brands (Pastikan sudah npm install react-icons)
+import {
+  SiNextdotjs,
+  SiLaravel,
+  SiFlutter,
+  SiMysql,
+  SiDocker,
+  SiTailwindcss,
+  SiReact,
+} from "react-icons/si";
+import { Database } from "lucide-react"; // Fallback icon
 
 interface Props {
   title: string;
   description: string;
+  role: string; // Baru
+  period: string; // Baru
+  slug: string; // Baru
   tags: readonly string[];
-  link?: string;
+  image?: string;
 }
 
-export function ProjectCard({ title, description, tags, link }: Props) {
+// Helper untuk mapping icon (Bisa dipindah ke utils jika mau)
+const getTechIcon = (tag: string) => {
+  const t = tag.toLowerCase();
+  if (t.includes("next")) return <SiNextdotjs title="Next.js" />;
+  if (t.includes("react")) return <SiReact title="React" />;
+  if (t.includes("laravel")) return <SiLaravel title="Laravel" />;
+  if (t.includes("flutter")) return <SiFlutter title="Flutter" />;
+  if (t.includes("mysql") || t.includes("database"))
+    return <SiMysql title="MySQL" />;
+  if (t.includes("docker")) return <SiDocker title="Docker" />;
+  if (t.includes("tailwind")) return <SiTailwindcss title="Tailwind" />;
+  return <Database title={tag} />; // Default
+};
+
+export function ProjectCard({
+  title,
+  description,
+  role,
+  period,
+  slug,
+  tags,
+  image,
+}: Props) {
   return (
-    <Card className="group relative overflow-hidden border border-zinc-800 bg-zinc-900/50 hover:border-emerald-500/50 hover:bg-zinc-900 transition-all duration-300">
-      {/* Efek Glow saat Hover */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-emerald-500/0 via-emerald-500/0 to-emerald-500/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+    <Link href={`/projects/${slug}`} className="group block h-full">
+      <div className="flex flex-col h-full overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 hover:border-zinc-700 transition-all duration-300 shadow-sm hover:shadow-md">
+        {/* 1. GAMBAR (Full Width seperti Gambar 1) */}
+        {image && (
+          <div className="relative w-full aspect-[16/9] overflow-hidden bg-zinc-900">
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+        )}
 
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-xl font-bold text-zinc-100">
+        {/* 2. KONTEN (Title, Role, Tech Icons) */}
+        <div className="flex flex-col flex-1 p-5">
+          {/* Title */}
+          <h3 className="text-xl font-bold text-zinc-100 font-sans mb-1 group-hover:text-emerald-500 transition-colors">
             {title}
-          </CardTitle>
-          {link && (
-            <Link
-              href={link}
-              target="_blank"
-              className="text-zinc-500 hover:text-emerald-500 transition-colors"
-            >
-              <ArrowUpRight className="h-5 w-5" />
-            </Link>
-          )}
-        </div>
-        <CardDescription className="text-zinc-400 line-clamp-2">
-          {description}
-        </CardDescription>
-      </CardHeader>
+          </h3>
 
-      <CardContent>
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="secondary"
-              className="bg-zinc-800 text-zinc-300 hover:bg-emerald-500/20 hover:text-emerald-400 border border-transparent hover:border-emerald-500/30 transition-all"
-            >
-              {tag}
-            </Badge>
-          ))}
+          {/* Role & Period (Abu-abu kecil) */}
+          <div className="flex items-center gap-2 text-xs text-zinc-500 font-mono mb-6">
+            <span>{role}</span>
+            <span>•</span>
+            <span>{period}</span>
+          </div>
+
+          {/* Tech Stack Icons (Baris bawah) */}
+          <div className="mt-auto flex items-center gap-3 text-zinc-400">
+            {tags.map((tag) => (
+              <div
+                key={tag}
+                className="text-xl hover:text-emerald-400 transition-colors"
+              >
+                {getTechIcon(tag)}
+              </div>
+            ))}
+          </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </Link>
   );
 }
