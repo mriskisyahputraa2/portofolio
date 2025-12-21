@@ -25,32 +25,35 @@ export default function Home() {
 
         {/* 3. FEATURED PROJECTS SECTION */}
         <section className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
-          <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800 pb-6">
+            {/* Kiri: Judul & Deskripsi */}
             <div className="space-y-1">
-              <h2 className="text-2xl font-bold text-zinc-100">
+              <h2 className="text-2xl md:text-3xl font-bold text-zinc-100 font-sans tracking-tight">
                 Featured Projects
               </h2>
-              <p className="text-sm text-zinc-400">
-                A glimpse of my recent works.
+              <p className="text-sm md:text-base text-zinc-400 max-w-md">
+                Selected works demonstrating fullstack capabilities.
               </p>
             </div>
 
-            {/* TOMBOL "See All Projects" (Update Disini) */}
             <Button
               asChild
-              variant="ghost"
-              className="text-emerald-500 hover:text-emerald-400 hover:bg-emerald-500/10 transition-all"
+              variant="outline"
+              className="self-start md:self-auto rounded-full border-zinc-800 bg-zinc-900/50 text-zinc-300 hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all duration-300 group"
             >
               <Link
                 href="/projects"
-                className="flex items-center gap-2 font-mono"
+                className="flex items-center gap-2 pl-4 pr-2 py-1"
               >
-                See All Projects <ArrowRight className="w-4 h-4" />
+                <span className="text-sm font-medium">See All Projects</span>
+                <span className="bg-zinc-800 group-hover:bg-emerald-500/20 rounded-full p-1 transition-colors">
+                  <ArrowRight className="w-3 h-3 group-hover:-rotate-45 transition-transform duration-300" />
+                </span>
               </Link>
             </Button>
           </div>
 
-          {/* Grid Proyek (Hanya 4 item) */}
+          {/* Grid Proyek (Tetap Sama) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {featuredProjects.map((project) => (
               <ProjectCard

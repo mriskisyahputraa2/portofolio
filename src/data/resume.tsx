@@ -43,7 +43,7 @@ export const RESUME_DATA = {
     {
       title: "PanganKU",
       slug: "panganku", // 1. SLUG UNTUK URL
-      techStack: ["Laravel", "Flutter", "MySQL", "Fullstack"],
+      techStack: ["Laravel", "Flutter", "MySQL"],
       description:
         "An integrated e-commerce platform consisting of a Web Admin dashboard and a Mobile Customer App.",
 
@@ -71,7 +71,7 @@ export const RESUME_DATA = {
     {
       title: "UKM Policy Voting System",
       slug: "ukm-policy-voting",
-      techStack: ["Next.js", "Database Design", "Side Project"],
+      techStack: ["Next.js", "Mysql"],
       description:
         "An e-voting platform developed for the UKM Policy student organization to handle high-concurrency traffic.",
 
