@@ -34,10 +34,13 @@ export function Skills() {
   const skills = TECH_STACK;
 
   return (
-    <section className="space-y-8 py-12">
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-bold text-zinc-100">Tech Stack</h2>
-        <p className="text-zinc-400 text-sm">
+    <section className="space-y-8 py-8">
+      {/* UBAH DISINI: text-center MENJADI text-left */}
+      <div className="text-left space-y-1 border-b border-zinc-800/50 pb-4">
+        <h2 className="text-xl font-bold text-zinc-100 flex items-center gap-2">
+          <span className="text-emerald-500">&lt;/&gt;</span> Tech Stack
+        </h2>
+        <p className="text-zinc-500 text-sm">
           Technologies I use to build scalable solutions.
         </p>
       </div>

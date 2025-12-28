@@ -1,7 +1,7 @@
-import { Code, Globe } from "lucide-react";
+import { Code, Globe, Instagram } from "lucide-react";
 
 export const RESUME_DATA = {
-  name: "Riski",
+  name: "Muhammad Rizki Syahputra",
   initials: "RS",
   location: "Lhokseumawe, Aceh, ID",
   locationLink: "https://maps.app.goo.gl/CqbzMxSKi8z591qB9",
@@ -25,6 +25,11 @@ export const RESUME_DATA = {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/muhammad-rizki-syahputraaa/",
         icon: Globe,
+      },
+      {
+        name: "Instagram",
+        url: "https://www.instagram.com/mrizkisyahputraa/",
+        icon: Instagram,
       },
     ],
   },
