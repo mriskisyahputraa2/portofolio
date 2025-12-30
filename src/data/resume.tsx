@@ -9,6 +9,9 @@ export const RESUME_DATA = {
     "Student at Politeknik Negeri Lhokseumawe (TRKJ). Software Engineer focused on building integrated Web & Mobile ecosystems.",
   summary:
     "A Software Engineer with a strong foundation in Network Engineering. I specialize in bridging the gap between Mobile Applications (Flutter) and Modern Web Backends (Laravel/Next.js) to deliver secure and scalable digital solutions. Currently available for Internship/WFH positions.",
+  summary_id:
+    "Seorang Software Engineer dengan fondasi kuat dalam Network Engineering. Saya berspesialisasi dalam menjembatani kesenjangan antara Aplikasi Mobile (Flutter) dan Backend Web Modern (Laravel/Next.js) untuk menghadirkan solusi digital yang aman dan dapat diskalakan. Saat ini tersedia untuk posisi Magang/WFH.",
+
   avatarUrl: "https://github.com/mriskisyahputraa2.png",
   personalWebsiteUrl: "https://riski.dev",
   cvUrl: "/cv_riski_fullstack.pdf",
