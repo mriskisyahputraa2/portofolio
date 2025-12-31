@@ -2,7 +2,6 @@
 
 import { Hero } from "@/components/modules/hero";
 import ContactSection from "@/components/modules/contact";
-import { Skills } from "@/components/modules/skills";
 import { RESUME_DATA } from "@/data/resume";
 import Link from "next/link";
 import Image from "next/image";
@@ -21,7 +20,8 @@ export default function Home() {
   const showcaseProject = RESUME_DATA.projects[0];
 
   return (
-    <div className="space-y-16 animate-in fade-in duration-500">
+    // PERBAIKAN: space-y-16 -> space-y-8 (Agar jarak tidak terlalu jauh)
+    <div className="space-y-8 animate-in fade-in duration-500">
       <Hero />
 
       <section className="space-y-6">
@@ -163,7 +163,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PERBAIKAN: Menggunakan style yang sama dengan Tech Stack (zinc-800/50) */}
+      {/* Footer / Contact Section */}
       <div className="border-t border-zinc-200 dark:border-zinc-800/50 pt-12">
         <ContactSection />
       </div>

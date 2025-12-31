@@ -27,7 +27,7 @@ export default function ContactSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            <Avatar className="h-22 w-22 border-2 border-emerald-500/20">
+            <Avatar className="h-20 w-22 border-2 border-emerald-500/20">
               <AvatarImage
                 src={RESUME_DATA.avatarUrl}
                 alt={RESUME_DATA.name}
@@ -74,11 +74,6 @@ export default function ContactSection() {
                     ? "Budi Santoso"
                     : "John Doe"
                 }
-                // Input:
-                // Bg: Light(white) Dark(zinc-950/50)
-                // Border: Light(zinc-200) Dark(zinc-800)
-                // Text: Light(zinc-900) Dark(zinc-100)
-                // Placeholder: Light(zinc-400) Dark(zinc-600)
                 className="w-full rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
               />
             </div>

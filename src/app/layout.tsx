@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Sidebar } from "@/components/layout/sidebar";
 import { MobileHeader } from "@/components/layout/mobile-header";
-import { Footer } from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/shared/theme-provider";
 import { LanguageProvider } from "@/hooks/use-language";
 
@@ -42,20 +41,24 @@ export default function RootLayout({
           <LanguageProvider>
             {/* CONTAINER UTAMA */}
             <div className="max-w-[1400px] mx-auto min-h-screen px-4 md:px-6 py-4 md:py-8">
-              {/* MOBILE HEADER */}
-              <div className="md:hidden mb-6 sticky top-4 z-50">
+              {/* --- PERBAIKAN DI SINI (MOBILE HEADER WRAPPER) --- */}
+              {/* Ganti 'md:hidden' jadi 'xl:hidden' agar di iPad (md/lg) header ini tetap muncul */}
+              <div className="xl:hidden mb-6 h-12">
                 <MobileHeader />
               </div>
 
-              {/* DESKTOP GRID LAYOUT */}
-              <div className="flex flex-col md:grid md:grid-cols-[260px_1fr] lg:gap-12 md:gap-8 relative">
+              {/* --- PERBAIKAN DI SINI (LAYOUT GRID) --- */}
+              {/* Ganti 'md:grid' jadi 'xl:grid'. Di iPad layoutnya akan numpuk (stack) seperti HP */}
+              <div className="flex flex-col xl:grid xl:grid-cols-[260px_1fr] lg:gap-12 md:gap-8 relative">
                 {/* SIDEBAR (Sticky) */}
-                <aside className="hidden md:block h-[calc(100vh-4rem)] sticky top-8 overflow-y-auto pr-2 scrollbar-none">
+                {/* Ganti 'hidden md:block' jadi 'hidden xl:block' agar sidebar HILANG di iPad */}
+                <aside className="hidden xl:block h-[calc(100vh-4rem)] sticky top-8 overflow-y-auto pr-2 scrollbar-none">
                   <Sidebar />
                 </aside>
 
                 {/* MAIN CONTENT */}
-                <main className="flex-1 min-w-0 space-y-12 md:pt-4">
+                {/* Ganti 'md:pt-4' jadi 'xl:pt-4' */}
+                <main className="flex-1 min-w-0 space-y-12 xl:pt-4">
                   {children}
                 </main>
               </div>
