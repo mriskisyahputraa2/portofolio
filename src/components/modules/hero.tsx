@@ -43,7 +43,7 @@ export function Hero() {
 
       {/* 2. Description / Summary Dinamis */}
       {/* Teks: Light(zinc-600) Dark(zinc-400) | Border: Light(zinc-200) Dark(zinc-800) */}
-      <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl text-base leading-relaxed border-l-2 border-zinc-200 dark:border-zinc-800 pl-4">
+      <p className="text-zinc-600 dark:text-zinc-400  text-base leading-relaxed border-l-2 border-zinc-200 dark:border-zinc-800 pl-4">
         {language === "id" ? RESUME_DATA.summary_id : RESUME_DATA.summary}
       </p>
 
