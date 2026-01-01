@@ -36,6 +36,31 @@ export const RESUME_DATA = {
       },
     ],
   },
+
+  resumeUrl: "https://cv-link-kamu.com/resume.pdf", // Link download CV
+  work: [
+    {
+      company: "Nama Perusahaan",
+      href: "https://company.com",
+      badges: ["Remote", "Fulltime"], // Status kerja
+      logoUrl: "/assets/images/careers/panganku.png",
+      location: "Jakarta, Indonesia",
+      title: "Software Engineer",
+      start: "2023",
+      end: "Present",
+      description: "Deskripsi pekerjaan dan tanggung jawab...",
+    },
+  ],
+  education: [
+    {
+      school: "Nama Universitas/Sekolah",
+      href: "https://univ.ac.id",
+      degree: "Sarjana Komputer",
+      start: "2019",
+      end: "2023",
+    },
+  ],
+
   skills: [
     "Next.js 15",
     "React",
