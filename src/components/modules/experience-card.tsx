@@ -51,17 +51,11 @@ export function ExperienceCard({
     >
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         {/* --- LOGO PERUSAHAAN --- */}
-        {/* Hapus 'p-1' atau padding apapun di Image agar gambar mentok ke pinggir */}
         <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white shrink-0 shadow-sm flex items-center justify-center">
           <Image
             src={imgSrc || fallbackImage}
             alt={company}
             fill
-            // PERBAIKAN:
-            // 1. Hapus 'p-1' (Agar full sampai ujung)
-            // 2. Gunakan 'object-contain' agar logo utuh dan tidak ada bagian yang terpotong (zoom out otomatis jika kegedean)
-            // ATAU gunakan 'object-cover' HANYA JIKA gambar Anda sudah pasti kotak (square) sempurna.
-            // Saya sarankan 'object-contain' untuk logo perusahaan agar aman.
             className="object-contain"
             onError={() => setImgSrc(fallbackImage)}
           />

@@ -100,15 +100,15 @@ export default function AboutPage() {
         <div className="grid gap-6">
           {RESUME_DATA.work.map((work) => (
             <ExperienceCard
-              key={work.company}
+              key={`${work.company}-${work.title}`}
               logo={work.logoUrl}
               title={work.title}
               company={work.company}
               start={work.start}
               end={work.end}
+              description={work.description}
               location={work.location}
               status={work.badges[0]}
-              description={work.description}
             />
           ))}
         </div>

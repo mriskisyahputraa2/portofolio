@@ -11,12 +11,11 @@ import {
   Trophy,
   LayoutGrid,
   Mail,
-  Github,
-  Linkedin,
-  Instagram,
   BadgeCheck,
   SunMedium,
   MoonStar,
+  // Kita hapus import Github, Linkedin, Instagram dari sini
+  // Karena kita akan pakai icon dari data resume.tsx langsung
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
@@ -50,7 +49,6 @@ export function Sidebar() {
         {/* Avatar */}
         <div className="relative h-20 w-20 mb-3">
           <div className="absolute inset-[-3px] rounded-full border border-dashed border-emerald-500/40 animate-[spin_10s_linear_infinite] opacity-50"></div>
-          {/* Border: Light(zinc-200) | Dark(zinc-950) */}
           <Avatar className="h-full w-full border-2 border-zinc-200 dark:border-zinc-950 shadow-xl">
             <AvatarImage
               src={RESUME_DATA.avatarUrl}
@@ -62,9 +60,8 @@ export function Sidebar() {
           <div className="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-emerald-500 border-2 border-zinc-200 dark:border-zinc-950 z-20"></div>
         </div>
 
-        {/* NAMA LENGKAP (Satu Baris) */}
+        {/* NAMA LENGKAP */}
         <div className="flex items-center justify-center gap-1 w-full">
-          {/* Text: Light(zinc-900) | Dark(zinc-100) */}
           <h2 className="text-[16px] font-bold text-zinc-900 dark:text-zinc-100 font-sans tracking-tight whitespace-nowrap">
             {RESUME_DATA.name}
           </h2>
@@ -73,18 +70,14 @@ export function Sidebar() {
 
         {/* TOGGLE LANGUAGE & THEME */}
         <div className="flex items-center gap-2 mt-4">
-          {/* Language Toggle */}
-          {/* Container: Light(zinc-100 + border-zinc-200) | Dark(zinc-900 + border-zinc-800) */}
           <div className="flex bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg p-1">
             <button
               onClick={() => setLanguage("en")}
               className={cn(
                 "px-2 py-1 text-xs rounded-md transition-all font-bold",
                 language === "en"
-                  ? // Active: Light(Putih shadow) | Dark(Zinc-800 text Putih)
-                    "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-white"
-                  : // Inactive: Light(zinc-500) | Dark(zinc-500)
-                    "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300"
+                  ? "bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-white"
+                  : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300"
               )}
             >
               🇺🇸
@@ -102,8 +95,6 @@ export function Sidebar() {
             </button>
           </div>
 
-          {/* Theme Toggle */}
-          {/* Light(bg-zinc-100 border-zinc-200) | Dark(bg-zinc-900 border-zinc-800) */}
           <Button
             variant="outline"
             size="icon"
@@ -118,38 +109,21 @@ export function Sidebar() {
           </Button>
         </div>
 
-        {/* SOCIAL ICONS (KEMBALI MANUAL + IG) */}
-        {/* Border Top: Light(zinc-200) | Dark(zinc-800) */}
-        <div className="flex gap-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/50 w-full justify-center">
-          {/* 1. GitHub */}
-          <Link
-            href={RESUME_DATA.contact.social[0].url}
-            target="_blank"
-            // Button: Light(zinc-100) | Dark(zinc-900/50)
-            className="text-zinc-500 hover:text-black dark:hover:text-white transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800"
-          >
-            <Github className="h-4 w-4" />
-          </Link>
+        <div className="flex gap-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/50 w-full justify-center flex-wrap">
+          {/* Loop untuk Sosial Media (GitHub, LinkedIn, Instagram, dll) */}
+          {RESUME_DATA.contact.social.map((social) => (
+            <Link
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              className="text-zinc-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 group"
+            >
+              {/* Mengambil Icon langsung dari data resume.tsx */}
+              <social.icon className="h-4 w-4" />
+            </Link>
+          ))}
 
-          {/* 2. LinkedIn */}
-          <Link
-            href={RESUME_DATA.contact.social[1].url}
-            target="_blank"
-            className="text-zinc-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800"
-          >
-            <Linkedin className="h-4 w-4" />
-          </Link>
-
-          {/* 3. Instagram */}
-          <Link
-            href={RESUME_DATA.contact.social[2].url}
-            target="_blank"
-            className="text-zinc-500 hover:text-pink-600 dark:hover:text-pink-500 transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800"
-          >
-            <Instagram className="h-4 w-4" />
-          </Link>
-
-          {/* 4. Email */}
+          {/* Email (Tetap Manual karena formatnya mailto:) */}
           <Link
             href={`mailto:${RESUME_DATA.contact.email}`}
             className="text-zinc-500 hover:text-red-600 dark:hover:text-red-400 transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800"
@@ -159,7 +133,7 @@ export function Sidebar() {
         </div>
       </div>
 
-      {/* 2. NAVIGASI */}
+      {/* 2. NAVIGASI (Tidak berubah) */}
       <nav className="flex flex-col gap-1 w-full px-3 mt-2">
         <p className="px-2 text-[10px] font-medium text-zinc-500 mb-2 uppercase tracking-wider">
           {t.sidebar.platform}
@@ -173,10 +147,8 @@ export function Sidebar() {
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 group",
                 isActive
-                  ? // Active: Light(zinc-100 text-900) | Dark(zinc-800 text-100)
-                    "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 border-l-2 border-emerald-500"
-                  : // Inactive: Hover effect
-                    "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                  ? "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100 border-l-2 border-emerald-500"
+                  : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-900"
               )}
             >
               <item.icon
@@ -224,7 +196,6 @@ export function Sidebar() {
 
       {/* 3. FOOTER */}
       <div className="mt-6 px-4">
-        {/* Garis: Light(zinc-200) | Dark(zinc-800) */}
         <div className="h-px w-full bg-zinc-200 dark:bg-zinc-800/50 mb-4" />
         <p className="text-[10px] text-zinc-600 dark:text-zinc-600 text-center leading-relaxed">
           © 2025 Muhammad Rizki Syahputra.

@@ -1,255 +1,152 @@
-import { Code, Globe, Instagram } from "lucide-react";
+import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/icons";
 
 export const RESUME_DATA = {
   name: "Muhammad Rizki Syahputra",
-  initials: "RS",
+  initials: "MR",
   location: "Lhokseumawe, Aceh, ID",
-  locationLink: "https://maps.app.goo.gl/CqbzMxSKi8z591qB9",
-  about:
-    "Student at Politeknik Negeri Lhokseumawe (TRKJ). Software Engineer focused on building integrated Web & Mobile ecosystems.",
-  summary:
-    "A Software Engineer with a strong foundation in Network Engineering. I specialize in bridging the gap between Mobile Applications (Flutter) and Modern Web Backends (Laravel/Next.js) to deliver secure and scalable digital solutions. Currently available for Internship/WFH positions.",
-  summary_id:
-    "Seorang Software Engineer dengan fondasi kuat dalam Network Engineering. Saya berspesialisasi dalam menjembatani kesenjangan antara Aplikasi Mobile (Flutter) dan Backend Web Modern (Laravel/Next.js) untuk menghadirkan solusi digital yang aman dan dapat diskalakan. Saat ini tersedia untuk posisi Magang/WFH.",
+  locationLink: "https://www.google.com/maps/place/Lhokseumawe",
 
-  avatarUrl: "https://github.com/mriskisyahputraa2.png",
-  personalWebsiteUrl: "https://riski.dev",
-  cvUrl: "/cv_riski_fullstack.pdf",
+  avatarUrl: "/assets/images/profiles/riski.png",
+
+  personalWebsiteUrl: "https://your-portfolio.com",
+
+  summary:
+    "Student of Network Computer Engineering at Politeknik Negeri Lhokseumawe specializing in Full Stack Web & Mobile Development. Experienced in building real-world solutions ranging from Donation Systems to E-Grocery platforms.",
+
+  summary_id:
+    "Mahasiswa Teknologi Rekayasa Komputer Jaringan di Politeknik Negeri Lhokseumawe dengan spesialisasi Full Stack Web & Mobile Development. Berpengalaman membangun solusi nyata mulai dari Sistem Donasi hingga platform E-Grocery.",
+
   contact: {
     email: "riskideveloper2@gmail.com",
-    tel: "+628123456789",
+    tel: "+62895603456706",
     social: [
       {
         name: "GitHub",
         url: "https://github.com/mriskisyahputraa2",
-        icon: Code,
+        icon: GitHubIcon,
       },
       {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/muhammad-rizki-syahputraaa/",
-        icon: Globe,
+        icon: LinkedInIcon,
       },
       {
         name: "Instagram",
         url: "https://www.instagram.com/mrizkisyahputraa/",
-        icon: Instagram,
+        icon: InstagramIcon,
       },
     ],
   },
 
-  resumeUrl: "https://cv-link-kamu.com/resume.pdf", // Link download CV
-  work: [
-    {
-      company: "Nama Perusahaan",
-      href: "https://company.com",
-      badges: ["Remote", "Fulltime"], // Status kerja
-      logoUrl: "/assets/images/careers/logo-pnl.png",
-      location: "Jakarta, Indonesia",
-      title: "Software Engineer",
-      start: "2023",
-      end: "Present",
-      description: "Deskripsi pekerjaan dan tanggung jawab...",
-    },
-    {
-      company: "Nama Perusahaan",
-      href: "https://company.com",
-      badges: ["Remote", "Fulltime"], // Status kerja
-      logoUrl: "/assets/images/careers/logo-pnl.png",
-      location: "Jakarta, Indonesia",
-      title: "Software Engineer",
-      start: "2023",
-      end: "Present",
-      description: "Deskripsi pekerjaan dan tanggung jawab...",
-    },
-    {
-      company: "Nama Perusahaan",
-      href: "https://company.com",
-      badges: ["Remote", "Fulltime"], // Status kerja
-      logoUrl: "/assets/images/careers/logo-pnl.png",
-      location: "Jakarta, Indonesia",
-      title: "Software Engineer",
-      start: "2023",
-      end: "Present",
-      description: "Deskripsi pekerjaan dan tanggung jawab...",
-    },
-  ],
   education: [
     {
-      school: "Nama Universitas/Sekolah",
-      href: "https://univ.ac.id",
-      degree: "Sarjana Komputer",
-      logoUrl: "/assets/images/education/logo-pnl.png",
-      start: "2019",
-      end: "2023",
+      school: "Politeknik Negeri Lhokseumawe",
+      href: "https://pnl.ac.id",
+      degree: "Sarjana Terapan (D4) Teknologi Rekayasa Komputer Jaringan",
+      start: "2023",
+      end: "Sekarang",
+      logo: "/assets/pnl-logo.png",
+      description:
+        "Fokus pada Infrastruktur Jaringan, Keamanan Siber, dan Rekayasa Perangkat Lunak. \n Mata Kuliah Utama: Cloud Computing (AWS/Docker), Ethical Hacking & Digital Forensics, Mobile App Dev (Flutter), dan Pemrograman Web Lanjut.",
+    },
+  ],
+
+  work: [
+    {
+      company: "UPZIS Politeknik Negeri Lhokseumawe",
+      href: "https://pnl.ac.id",
+      badges: ["Laravel", "Inertia.js", "React", "Tailwind"],
+      location: "Lhokseumawe, Indonesia",
+      title: "Full Stack Web Developer",
+      logoUrl: "/assets/pnl-logo.png",
+      start: "Sep 2025",
+      end: "Nov 2025",
+      description:
+        "Merancang Sistem Informasi Zakat & Donasi yang komprehensif untuk mendigitalkan alur kerja keuangan.\n• Mengembangkan platform donatur dengan fitur Kalkulator Zakat dan gateway pembayaran (Gopay, Dana, Tunai).\n• Membangun Dashboard Admin untuk pemantauan transaksi real-time dan verifikasi Mustahik.",
     },
     {
-      school: "Nama Universitas/Sekolah",
-      href: "https://univ.ac.id",
-      degree: "Sarjana Komputer",
-      logoUrl: "/assets/images/education/logo-pnl.png",
-      start: "2019",
-      end: "2023",
+      company: "UKM Polytechnic Linux Community (POLICY)",
+      href: "#",
+      badges: ["Leadership", "Laravel", "Scrum", "Mentoring"],
+      location: "Lhokseumawe, Indonesia",
+      title: "Head of Programming Division",
+      logoUrl: "/assets/policy-logo.png",
+      start: "2024",
+      end: "2025",
+      description:
+        "Memimpin Divisi Pemrograman, mengawasi pelaksanaan program kerja teknis dan workshop.\n• Memimpin pengembangan end-to-end website resmi UKM POLICY menggunakan Laravel dan React.js.\n• Bertindak sebagai Scrum Master/Tech Lead, mengelola siklus pengembangan dan membimbing anggota junior.",
     },
     {
-      school: "Nama Universitas/Sekolah",
-      href: "https://univ.ac.id",
-      degree: "Sarjana Komputer",
-      logoUrl: "/assets/images/education/logo-pnl.png",
-      start: "2019",
-      end: "2023",
+      company: "UKM Polytechnic Linux Community (POLICY)",
+      href: "#",
+      badges: ["Web Development", "Teamwork"],
+      location: "Lhokseumawe, Indonesia",
+      title: "Web Developer Team",
+      logoUrl: "/assets/policy-logo.png",
+      start: "Mei 2025",
+      end: "Agus 2025",
+      description:
+        "Berkolaborasi dalam tim untuk merancang dan mengimplementasikan kehadiran digital organisasi.\n• Fokus pada arsitektur backend menggunakan Laravel untuk memastikan penanganan data yang aman.",
     },
     {
-      school: "Nama Universitas/Sekolah",
-      href: "https://univ.ac.id",
-      degree: "Sarjana Komputer",
-      logoUrl: "/assets/images/education/logo-pnl.png",
-      start: "2019",
-      end: "2023",
+      company: "Dinas PUPR Lhokseumawe",
+      href: "#",
+      badges: ["Internship", "Administration"],
+      location: "Lhokseumawe, Indonesia",
+      title: "IT Support Intern",
+      logoUrl: "/assets/pupr-logo.png",
+      start: "Des 2021",
+      end: "Mar 2022",
+      description:
+        "Mendukung efisiensi operasional Dinas Pekerjaan Umum.\n• Membantu pemrosesan data teknis dan pengarsipan digital untuk dokumentasi proyek kota yang akurat.",
     },
   ],
 
   skills: [
-    "Next.js 15",
-    "React",
-    "Laravel",
     "Flutter",
+    "Laravel",
+    "Next.js",
+    "React.js",
     "Inertia.js",
-    "MySQL",
     "Tailwind CSS",
+    "Node.js",
+    "MySQL",
+    "PostgreSQL",
     "Docker",
+    "AWS (EC2, S3)",
     "Git",
+    "Cyber Security (Basic)",
   ],
+
   projects: [
     {
       title: "PanganKU",
-      slug: "panganku", // 1. SLUG UNTUK URL
-      techStack: ["Laravel", "Flutter", "MySQL"],
+      techStack: ["Flutter", "Laravel", "REST API", "MySQL"],
       description:
-        "An integrated e-commerce platform consisting of a Web Admin dashboard and a Mobile Customer App.",
-
-      // 2. DATA UNTUK CARD (GAMBAR 1)
-      role: "Fullstack Developer",
-      period: "Jan 2024 - Mar 2024",
-      image: "/assets/images/projects/panganku.png",
-
-      // 3. DATA UNTUK DETAIL PAGE (GAMBAR 2)
-      website: "#",
-      source: "https://github.com/username/panganku",
-      details: {
-        brief:
-          "PanganKU is a digital platform designed to help local farmers sell their products directly to consumers. It cuts the middleman, ensuring better prices for farmers and fresher produce for buyers.",
-        responsibility: [
-          "Designed the database schema for multi-user roles (Admin, Farmer, Customer).",
-          "Developed the REST API using Laravel for the Flutter mobile app.",
-          "Implemented real-time order tracking using Firebase.",
-          "Created the Admin Dashboard for inventory management.",
-        ],
-        result:
-          "Successfully launched the beta version with 50+ active farmers and 200+ daily transactions. Reduced food waste by 15% through better inventory tracking.",
+        "Ekosistem E-Grocery terintegrasi yang menampilkan Aplikasi Mobile untuk pelanggan dan Web Dashboard untuk manajemen inventaris.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/mriskisyahputraa2/panganku",
       },
     },
     {
-      title: "UKM Policy Voting System",
-      slug: "ukm-policy-voting",
-      techStack: ["Next.js", "Mysql"],
+      title: "UKM POLICY Website",
+      techStack: ["Laravel", "Inertia.js", "React", "Tailwind"],
       description:
-        "An e-voting platform developed for the UKM Policy student organization to handle high-concurrency traffic.",
-
-      role: "Backend Developer",
-      period: "Oct 2023 - Dec 2023",
-      image: "/assets/images/projects/ukmpolicy.png",
-
-      website: "https://ukmpolicy.com",
-      source: "https://github.com/username/voting",
-      details: {
-        brief:
-          "A secure and transparent e-voting system built for student organization elections. The system focuses on preventing double-voting and ensuring anonymity.",
-        responsibility: [
-          "Built the voting engine using Next.js Server Actions.",
-          "Optimized database queries to handle 1000+ concurrent users.",
-          "Implemented encryption for voter anonymity.",
-          "Designed the real-time result dashboard.",
-        ],
-        result:
-          "Handled 3,000+ votes in a 4-hour window with zero downtime. Increased voter participation by 40% compared to the manual system.",
+        "Website resmi organisasi untuk mengelola data anggota, acara, dan blog. Dibangun dengan fokus pada SEO dan kinerja.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/mriskisyahputraa2",
       },
     },
     {
-      title: "UKM Policy Voting System",
-      slug: "ukm-policy-voting",
-      techStack: ["Next.js", "Database Design", "Side Project"],
+      title: "Sistem Donasi UPZIS",
+      techStack: ["Laravel", "React", "Payment Gateway"],
       description:
-        "An e-voting platform developed for the UKM Policy student organization to handle high-concurrency traffic.",
-
-      role: "Backend Developer",
-      period: "Oct 2023 - Dec 2023",
-      image: "/assets/images/projects/ukmpolicy.png",
-
-      website: "https://ukmpolicy.com",
-      source: "https://github.com/username/voting",
-      details: {
-        brief:
-          "A secure and transparent e-voting system built for student organization elections. The system focuses on preventing double-voting and ensuring anonymity.",
-        responsibility: [
-          "Built the voting engine using Next.js Server Actions.",
-          "Optimized database queries to handle 1000+ concurrent users.",
-          "Implemented encryption for voter anonymity.",
-          "Designed the real-time result dashboard.",
-        ],
-        result:
-          "Handled 3,000+ votes in a 4-hour window with zero downtime. Increased voter participation by 40% compared to the manual system.",
-      },
-    },
-    {
-      title: "UKM Policy Voting System",
-      slug: "ukm-policy-voting",
-      techStack: ["Next.js", "Database Design", "Side Project"],
-      description:
-        "An e-voting platform developed for the UKM Policy student organization to handle high-concurrency traffic.",
-
-      role: "Backend Developer",
-      period: "Oct 2023 - Dec 2023",
-      image: "/assets/images/projects/ukmpolicy.png",
-
-      website: "https://ukmpolicy.com",
-      source: "https://github.com/username/voting",
-      details: {
-        brief:
-          "A secure and transparent e-voting system built for student organization elections. The system focuses on preventing double-voting and ensuring anonymity.",
-        responsibility: [
-          "Built the voting engine using Next.js Server Actions.",
-          "Optimized database queries to handle 1000+ concurrent users.",
-          "Implemented encryption for voter anonymity.",
-          "Designed the real-time result dashboard.",
-        ],
-        result:
-          "Handled 3,000+ votes in a 4-hour window with zero downtime. Increased voter participation by 40% compared to the manual system.",
-      },
-    },
-    {
-      title: "UKM Policy Voting System",
-      slug: "ukm-policy-voting",
-      techStack: ["Next.js", "Database Design", "Side Project"],
-      description:
-        "An e-voting platform developed for the UKM Policy student organization to handle high-concurrency traffic.",
-
-      role: "Backend Developer",
-      period: "Oct 2023 - Dec 2023",
-      image: "/assets/images/projects/ukmpolicy.png",
-
-      website: "https://ukmpolicy.com",
-      source: "https://github.com/username/voting",
-      details: {
-        brief:
-          "A secure and transparent e-voting system built for student organization elections. The system focuses on preventing double-voting and ensuring anonymity.",
-        responsibility: [
-          "Built the voting engine using Next.js Server Actions.",
-          "Optimized database queries to handle 1000+ concurrent users.",
-          "Implemented encryption for voter anonymity.",
-          "Designed the real-time result dashboard.",
-        ],
-        result:
-          "Handled 3,000+ votes in a 4-hour window with zero downtime. Increased voter participation by 40% compared to the manual system.",
+        "Platform digital untuk pengumpulan Zakat dan Donasi dengan pelaporan otomatis dan alat verifikasi admin.",
+      link: {
+        label: "github.com",
+        href: "https://github.com/mriskisyahputraa2",
       },
     },
   ],
