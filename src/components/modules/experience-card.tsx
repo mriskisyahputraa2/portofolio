@@ -9,9 +9,9 @@ import {
   Calendar,
   Building2,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface ExperienceProps {
   logo?: string;
@@ -19,8 +19,8 @@ interface ExperienceProps {
   company: string;
   start: string;
   end: string;
-  location: string; // Lokasi
-  status?: string; // Kerja/Freelance/Magang (Opsional di data, tapi kita tampilkan jika ada)
+  location?: string;
+  status?: string;
   description: string;
 }
 
@@ -35,80 +35,112 @@ export function ExperienceCard({
   description,
 }: ExperienceProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [imgSrc, setImgSrc] = useState(logo);
+
+  const fallbackImage =
+    "https://ui-avatars.com/api/?name=" +
+    encodeURIComponent(company) +
+    "&background=random&color=fff&size=128";
 
   return (
-    <div className="group relative border-l-2 border-zinc-200 dark:border-zinc-800 pl-6 pb-2 transition-all hover:border-emerald-500 dark:hover:border-emerald-500">
-      {/* Bullet Point di Garis */}
-      <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full border-4 border-white dark:border-zinc-950 bg-zinc-200 dark:bg-zinc-800 group-hover:bg-emerald-500 transition-colors" />
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      className="group relative w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-5 transition-all shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
+    >
+      <div className="flex flex-col sm:flex-row gap-5 items-start">
+        {/* LOGO */}
+        <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl border border-zinc-100 dark:border-zinc-800 bg-white shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-500">
+          <Image
+            src={imgSrc || fallbackImage}
+            alt={company}
+            fill
+            className="object-contain p-2"
+            onError={() => setImgSrc(fallbackImage)}
+          />
+        </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between mb-2">
-        <div className="flex items-center gap-3">
-          {/* FOTO / LOGO */}
-          {logo && (
-            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-zinc-200 dark:border-zinc-800 shadow-sm shrink-0">
-              <Image src={logo} alt={company} fill className="object-cover" />
+        {/* CONTENT */}
+        <div className="flex-1 w-full space-y-2">
+          {/* Header Info */}
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+            <div>
+              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                {title}
+              </h3>
+              <div className="flex items-center gap-2 mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                <Building2 className="h-3.5 w-3.5 text-zinc-400" />
+                <span>{company}</span>
+              </div>
             </div>
-          )}
 
-          <div>
-            <h3 className="font-bold text-zinc-900 dark:text-zinc-100 text-base">
-              {title}
-            </h3>
-            <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
-              <span className="font-medium">{company}</span>
-              {status && (
-                <Badge
-                  variant="secondary"
-                  className="text-[10px] px-1.5 py-0 h-5 font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700"
-                >
-                  {status}
-                </Badge>
-              )}
+            {/* Date Badge */}
+            <div className="flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-500 bg-zinc-100 dark:bg-zinc-800/80 px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-700/50 whitespace-nowrap">
+              <Calendar className="h-3 w-3" />
+              {start} - {end}
             </div>
           </div>
-        </div>
 
-        {/* Tanggal */}
-        <div className="text-xs font-mono text-zinc-500 dark:text-zinc-500 bg-zinc-100 dark:bg-zinc-900 px-2 py-1 rounded-md border border-zinc-200 dark:border-zinc-800 shrink-0">
-          {start} - {end}
-        </div>
-      </div>
+          {/* Sub Info (Location & Status) */}
+          <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
+            {location && (
+              <div className="flex items-center gap-1">
+                <MapPin className="h-3.5 w-3.5 text-zinc-400" />
+                {location}
+              </div>
+            )}
 
-      {/* Lokasi */}
-      <div className="flex items-center gap-1.5 text-xs text-zinc-500 mb-3">
-        <MapPin className="h-3.5 w-3.5" />
-        {location}
-      </div>
+            {status && (
+              <Badge
+                variant="secondary"
+                className="text-[10px] px-2 py-0.5 h-5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 hover:bg-emerald-500/20"
+              >
+                {status}
+              </Badge>
+            )}
+          </div>
 
-      {/* TOMBOL TOGGLE (Show Responsibilities) */}
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 text-xs font-semibold text-emerald-600 dark:text-emerald-500 hover:text-emerald-700 dark:hover:text-emerald-400 transition-colors focus:outline-none mb-2"
-      >
-        {isOpen ? "Hide Responsibilities" : "Show Responsibilities"}
-        {isOpen ? (
-          <ChevronUp className="h-3 w-3" />
-        ) : (
-          <ChevronDown className="h-3 w-3" />
-        )}
-      </button>
-
-      {/* DESKRIPSI (Animasi Buka/Tutup) */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
+          {/* Toggle Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors focus:outline-none mt-2 select-none group/btn"
           >
-            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed bg-zinc-50 dark:bg-zinc-900/50 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800">
-              {description}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+            {isOpen ? (
+              <ChevronUp className="h-3.5 w-3.5" />
+            ) : (
+              <ChevronDown className="h-3.5 w-3.5 group-hover/btn:translate-y-0.5 transition-transform" />
+            )}
+            {isOpen ? "Hide Responsibilities" : "Show Responsibilities"}
+          </button>
+
+          {/* Description (Expandable) */}
+          <AnimatePresence>
+            {isOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="pt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed space-y-2 border-t border-zinc-100 dark:border-zinc-800 mt-2 border-dashed">
+                  {description.split("\n").map(
+                    (item, index) =>
+                      item.trim() && (
+                        <div key={index} className="flex gap-3 items-start">
+                          <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-500/50 shrink-0" />
+                          <p>{item.trim()}</p>
+                        </div>
+                      )
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+    </motion.div>
   );
 }

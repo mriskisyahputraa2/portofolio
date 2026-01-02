@@ -9,7 +9,6 @@ export function Hero() {
   const { t, language } = useLanguage();
 
   return (
-    // PERBAIKAN: Hapus 'pb-8' agar tidak double spacing dengan space-y-8 di page.tsx
     <section className="flex flex-col items-start justify-center space-y-6 pt-4 text-left animate-in fade-in slide-in-from-bottom-4 duration-1000">
       {/* 1. Header: Nama & Info Status */}
       <div className="space-y-2">
