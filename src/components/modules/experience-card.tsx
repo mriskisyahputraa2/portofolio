@@ -10,7 +10,6 @@ import {
   Building2,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
 interface ExperienceProps {
@@ -47,24 +46,29 @@ export function ExperienceCard({
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 p-5 transition-all shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30"
+      whileHover={{ y: -2, transition: { duration: 0.2 } }}
+      className="group relative w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-card/50 p-5 transition-all hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md"
     >
-      <div className="flex flex-col sm:flex-row gap-5 items-start">
-        {/* LOGO */}
-        <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl border border-zinc-100 dark:border-zinc-800 bg-white shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-500">
+      <div className="flex flex-col sm:flex-row gap-4 items-start">
+        {/* --- LOGO PERUSAHAAN --- */}
+        {/* Hapus 'p-1' atau padding apapun di Image agar gambar mentok ke pinggir */}
+        <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white shrink-0 shadow-sm flex items-center justify-center">
           <Image
             src={imgSrc || fallbackImage}
             alt={company}
             fill
-            className="object-contain p-2"
+            // PERBAIKAN:
+            // 1. Hapus 'p-1' (Agar full sampai ujung)
+            // 2. Gunakan 'object-contain' agar logo utuh dan tidak ada bagian yang terpotong (zoom out otomatis jika kegedean)
+            // ATAU gunakan 'object-cover' HANYA JIKA gambar Anda sudah pasti kotak (square) sempurna.
+            // Saya sarankan 'object-contain' untuk logo perusahaan agar aman.
+            className="object-contain"
             onError={() => setImgSrc(fallbackImage)}
           />
         </div>
 
-        {/* CONTENT */}
+        {/* CONTENT (Sama seperti sebelumnya) */}
         <div className="flex-1 w-full space-y-2">
-          {/* Header Info */}
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div>
               <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
@@ -83,7 +87,6 @@ export function ExperienceCard({
             </div>
           </div>
 
-          {/* Sub Info (Location & Status) */}
           <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
             {location && (
               <div className="flex items-center gap-1">
@@ -102,7 +105,6 @@ export function ExperienceCard({
             )}
           </div>
 
-          {/* Toggle Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors focus:outline-none mt-2 select-none group/btn"
@@ -115,7 +117,6 @@ export function ExperienceCard({
             {isOpen ? "Hide Responsibilities" : "Show Responsibilities"}
           </button>
 
-          {/* Description (Expandable) */}
           <AnimatePresence>
             {isOpen && (
               <motion.div

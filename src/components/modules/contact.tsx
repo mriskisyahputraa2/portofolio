@@ -70,9 +70,7 @@ export default function ContactSection() {
                 id="name"
                 type="text"
                 placeholder={
-                  t.contact.form.name === "Nama Lengkap"
-                    ? "Budi Santoso"
-                    : "John Doe"
+                  t.contact.form.name === "Nama Lengkap" ? "Name" : "Name"
                 }
                 className="w-full rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
               />
@@ -88,7 +86,7 @@ export default function ContactSection() {
               <input
                 id="email"
                 type="email"
-                placeholder="user@example.com"
+                placeholder="Email"
                 className="w-full rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
               />
             </div>
@@ -103,7 +101,7 @@ export default function ContactSection() {
               <textarea
                 id="message"
                 rows={4}
-                placeholder="..."
+                placeholder="Message"
                 className="w-full resize-none rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 px-4 py-3 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all"
               />
             </div>
