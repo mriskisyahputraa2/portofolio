@@ -57,6 +57,7 @@ export function ExperienceCard({
             alt={company}
             fill
             className="object-contain"
+            unoptimized={true}
             onError={() => setImgSrc(fallbackImage)}
           />
         </div>

@@ -13,9 +13,10 @@ import {
   CheckCircle2,
   Calendar,
   MonitorSmartphone,
+  ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TechBadge } from "@/components/shared/tech-badge"; // Import Badge Baru
+import { TechBadge } from "@/components/shared/tech-badge";
 import { motion } from "framer-motion";
 import { use } from "react";
 
@@ -33,7 +34,8 @@ export default function ProjectDetailPage({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="max-w-4xl pb-20"
+      // PERBAIKAN 1: Gunakan 'max-w-5xl' agar lebar konsisten dengan About Page
+      className="max-w-5xl pb-20"
     >
       <Link
         href="/projects"
@@ -45,6 +47,7 @@ export default function ProjectDetailPage({
 
       <div className="space-y-6 mb-10">
         <div className="space-y-3">
+          {/* Metadata Bar */}
           <div className="flex flex-wrap items-center gap-4 text-sm font-mono font-medium text-emerald-600 dark:text-emerald-400">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
@@ -56,37 +59,79 @@ export default function ProjectDetailPage({
               {project.platform}
             </span>
           </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tight">
-            {project.title}
-          </h1>
+
+          {/* (Judul Kiri, Tombol Kanan) */}
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-zinc-100 leading-tight tracking-tight flex-1">
+              {project.title}
+            </h1>
+
+            {/* Tombol Action (Source Code & Live Demo) di Samping Judul */}
+            <div className="flex flex-wrap gap-3 shrink-0">
+              {project.links.github && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-full gap-2 h-10 px-5 border-zinc-200 dark:border-zinc-700"
+                  >
+                    <Github className="w-4 h-4" />
+                    <span className="hidden sm:inline">Source Code</span>
+                    <span className="sm:hidden">Code</span>
+                  </Button>
+                </a>
+              )}
+
+              {project.links.demo && (
+                <a
+                  href={project.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    size="sm"
+                    className="rounded-full gap-2 h-10 px-5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
+                  >
+                    <Globe className="w-4 h-4" />
+                    <span>Live Demo</span>
+                    <ExternalLink className="w-3 h-3 ml-0.5 opacity-50" />
+                  </Button>
+                </a>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* --- GAMBAR PROJECT UTAMA --- */}
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-lg my-8">
+        {/* GAMBAR PROJECT UTAMA */}
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-lg my-8 bg-zinc-100 dark:bg-zinc-900">
           <Image
             src={project.thumbnail}
             alt={project.title}
             fill
             className="object-cover"
             priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
           />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6 border-y border-zinc-200 dark:border-zinc-800">
           <div className="space-y-2">
-            <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+            <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-2">
               <User className="w-3 h-3" /> My Role
             </span>
             <p className="font-medium text-zinc-900 dark:text-zinc-100 text-base">
               {project.role}
             </p>
           </div>
-          <div className="space-y-2">
-            <span className="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+          <div className="space-y-2 flex flex-col sm:items-end">
+            <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-2">
               <Layers className="w-3 h-3" /> Tech Stack
             </span>
-            {/* STACK BADGE ICON + TEXT */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 sm:justify-end">
               {project.techStack.map((t) => (
                 <TechBadge key={t} name={t} />
               ))}
@@ -143,37 +188,6 @@ export default function ProjectDetailPage({
             ))}
           </div>
         </section>
-
-        <div className="flex flex-wrap gap-4 pt-10 border-t border-zinc-200 dark:border-zinc-800 mt-12">
-          {project.links.github && (
-            <a
-              href={project.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg" className="rounded-full gap-2 font-semibold">
-                <Github className="w-5 h-5" />
-                View Source Code
-              </Button>
-            </a>
-          )}
-          {project.links.demo && (
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="rounded-full gap-2 font-semibold"
-              >
-                <Globe className="w-5 h-5" />
-                Live Demo
-              </Button>
-            </a>
-          )}
-        </div>
       </div>
     </motion.div>
   );

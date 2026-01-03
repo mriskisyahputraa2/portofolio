@@ -6,16 +6,26 @@ export const RESUME_DATA = {
   location: "Lhokseumawe, Aceh, ID",
   locationLink: "https://www.google.com/maps/place/Lhokseumawe",
 
-  avatarUrl: "/assets/images/profiles/riski.png",
+  avatarUrl: "/assets/images/profiles/2.png",
 
   personalWebsiteUrl: "https://your-portfolio.com",
 
-  summary:
-    "Student of Network Computer Engineering at Politeknik Negeri Lhokseumawe specializing in Full Stack Web & Mobile Development. Experienced in building real-world solutions ranging from Donation Systems to E-Grocery platforms.",
+  summary: `Hello there! Thank you for visiting my personal website. I'm Muhammad Rizki Syahputra, a student majoring in Network Computer Engineering at Politeknik Negeri Lhokseumawe. I'm a Full Stack Web & Mobile Developer with a passion for building impactful software products. My stack includes modern frontend technologies like Next.js, React, and Tailwind CSS, as well as backend development using Laravel and PHP. For mobile applications, I develop cross-platform apps using Flutter.
 
-  summary_id:
-    "Mahasiswa Teknologi Rekayasa Komputer Jaringan di Politeknik Negeri Lhokseumawe dengan spesialisasi Full Stack Web & Mobile Development. Berpengalaman membangun solusi nyata mulai dari Sistem Donasi hingga platform E-Grocery.",
+I enjoy creating solutions that are both user-friendly and performant. Whether it's building intuitive interfaces or architecting backend services (REST API), I aim to bring efficiency and clarity into every layer of the application. I’m a fast learner who thrives in dynamic environments, and I enjoy solving complex problems collaboratively.
 
+I believe that great communication and team synergy are key to success in software development. My experience, especially as Head of Programming Division at UKM POLICY, has shaped my technical and analytical skills, as well as my leadership qualities. I'm always excited to work in teams, learn from others, and contribute to impactful projects.
+
+Best regards,`,
+
+  // 2. VERSI BAHASA INDONESIA (Terjemahan yang disesuaikan)
+  summary_id: `Halo! Terima kasih telah mengunjungi website pribadi saya. Saya Muhammad Rizki Syahputra, mahasiswa Teknologi Rekayasa Komputer Jaringan di Politeknik Negeri Lhokseumawe. Saya seorang Full Stack Web & Mobile Developer yang memiliki semangat untuk membangun produk perangkat lunak yang berdampak. Stack teknologi saya meliputi teknologi frontend modern seperti Next.js, React, dan Tailwind CSS, serta pengembangan backend menggunakan Laravel dan PHP. Untuk aplikasi mobile, saya mengembangkan aplikasi lintas platform menggunakan Flutter.
+
+Saya senang menciptakan solusi yang ramah pengguna dan berkinerja tinggi. Baik itu membangun antarmuka yang intuitif atau merancang layanan backend (REST API), saya bertujuan untuk menghadirkan efisiensi dan kejelasan di setiap lapisan aplikasi. Saya adalah pembelajar cepat yang berkembang di lingkungan dinamis, dan saya senang memecahkan masalah kompleks secara kolaboratif.
+
+Saya percaya bahwa komunikasi yang baik dan sinergi tim adalah kunci keberhasilan dalam pengembangan perangkat lunak. Pengalaman saya, terutama sebagai Ketua Divisi Pemrograman di UKM POLICY, telah membentuk keterampilan teknis dan analitis saya, serta kualitas kepemimpinan saya. Saya selalu bersemangat untuk bekerja dalam tim, belajar dari orang lain, dan berkontribusi pada proyek-proyek yang berdampak.
+
+Salam hangat,`,
   contact: {
     email: "riskideveloper2@gmail.com",
     tel: "+62895603456706",

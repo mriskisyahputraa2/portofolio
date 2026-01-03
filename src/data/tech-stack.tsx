@@ -21,9 +21,11 @@ import {
   SiVercel,
   SiInertia,
   SiGithub,
+  SiPostman,
   SiBootstrap,
 } from "react-icons/si";
 import { Code2, Database, Globe } from "lucide-react"; // Icon fallback
+import { TbApi } from "react-icons/tb";
 
 // 1. Definisikan Data Terpusat
 export const TECH_STACK = [
@@ -48,6 +50,8 @@ export const TECH_STACK = [
   { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
   { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
   { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  // { name: "REST API", icon: TbApi, color: "#4F46E5" },
+  { name: "REST API", icon: SiPostman, color: "#FF6C37" },
 
   // --- TOOLS ---
   { name: "Vercel", icon: SiVercel, color: "#ffffff" },

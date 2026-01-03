@@ -25,10 +25,10 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     title: "PanganKU Ecosystem",
     shortDescription:
       "Integrated E-Grocery ecosystem featuring a Flutter Mobile App for customers and a Laravel Dashboard for vendors.",
-    year: "2025",
+    year: "Sep 2025 - Nov 2025",
     role: "Full Stack Mobile & Web Developer",
     platform: "Mobile (Android) & Web Application",
-    thumbnail: "/assets/images/projects/panganku.png", // Ganti dengan path gambarmu nanti
+    thumbnail: "/assets/images/projects/panganku.png",
     images: [
       "/assets/images/projects/panganku-1.png",
       "/assets/images/projects/panganku-2.png",
@@ -48,7 +48,7 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     ],
     links: {
       github: "https://github.com/mriskisyahputraa2/panganku",
-      // demo: "https://panganku.com",
+      demo: "https://panganku.mrkasir.com",
     },
   },
   {
@@ -88,7 +88,7 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     platform: "Web Application",
     thumbnail: "/assets/images/projects/policy-thumb.png",
     images: [],
-    techStack: ["Laravel", "React", "Inertia.js", "SEO Optimization"],
+    techStack: ["Laravel", "React", "Inertia.js"],
     description:
       "The official digital presence for the Polytechnic Linux Community (POLICY). Beyond just a landing page, this system serves as a membership management hub and an event publication platform.",
     problem:
@@ -103,11 +103,12 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     ],
     links: {
       github: "https://github.com/mriskisyahputraa2",
+      demo: "https://ukmpolicy.com",
     },
   },
   {
-    slug: "policy-official-website",
-    title: "UKM POLICY Official Site",
+    slug: "policy-official-websites",
+    title: "UKM POLICY Official Sites",
     shortDescription:
       "Official organization website managing member data, events, and blogs. Built with a focus on SEO and performance.",
     year: "2025",
@@ -115,7 +116,7 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     platform: "Web Application",
     thumbnail: "/assets/images/projects/policy-thumb.png",
     images: [],
-    techStack: ["Laravel", "React", "Inertia.js", "SEO Optimization"],
+    techStack: ["Laravel", "React", "Inertia.js"],
     description:
       "The official digital presence for the Polytechnic Linux Community (POLICY). Beyond just a landing page, this system serves as a membership management hub and an event publication platform.",
     problem:
