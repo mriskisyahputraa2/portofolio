@@ -26,6 +26,13 @@ Saya senang menciptakan solusi yang ramah pengguna dan berkinerja tinggi. Baik i
 Saya percaya bahwa komunikasi yang baik dan sinergi tim adalah kunci keberhasilan dalam pengembangan perangkat lunak. Pengalaman saya, terutama sebagai Ketua Divisi Pemrograman di UKM POLICY, telah membentuk keterampilan teknis dan analitis saya, serta kualitas kepemimpinan saya. Saya selalu bersemangat untuk bekerja dalam tim, belajar dari orang lain, dan berkontribusi pada proyek-proyek yang berdampak.
 
 Salam hangat,`,
+
+  summaryShort:
+    "Experienced Fullstack Developer specializing in scalable digital solutions. On the frontend, I work with Next.js, React, and Tailwind CSS. On the backend, I develop robust services using Laravel, and for mobile, I build cross-platform apps with Flutter.",
+
+  summaryShort_id:
+    "Fullstack Developer berpengalaman yang fokus pada solusi digital skalabel. Di frontend, saya menggunakan Next.js dan React. Di backend, saya membangun layanan tangguh menggunakan Laravel, dan untuk mobile, saya membuat aplikasi lintas platform dengan Flutter.",
+
   contact: {
     email: "riskideveloper2@gmail.com",
     tel: "+62895603456706",

@@ -14,23 +14,20 @@ import {
   FolderGit2,
 } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
-// 1. IMPORT ANIMASI
 import { motion } from "framer-motion";
 
-// Buat komponen MotionLink agar Link Next.js bisa dianimasikan
 const MotionLink = motion(Link);
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t } = useLanguage(); // Hapus 'language' jika tidak dipakai di sini
   const showcaseProject = RESUME_DATA.projects[0];
 
-  // 2. KONFIGURASI ANIMASI (Variants)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1, // Jeda waktu antar elemen muncul
+        staggerChildren: 0.1,
         delayChildren: 0.2,
       },
     },
@@ -52,20 +49,17 @@ export default function Home() {
   };
 
   return (
-    // WRAPPER UTAMA (motion.div)
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
       className="space-y-8"
     >
-      {/* SECTION HERO (Muncul duluan) */}
       <motion.div variants={itemVariants}>
         <Hero />
       </motion.div>
 
       <section className="space-y-6">
-        {/* Header Border */}
         <motion.div
           variants={itemVariants}
           className="space-y-1 border-b border-zinc-200 dark:border-zinc-800/50 pb-4"
@@ -79,13 +73,12 @@ export default function Home() {
           </p>
         </motion.div>
 
-        {/* GRID MENU */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[180px]">
           {/* A. PROJECTS SHOWCASE */}
           <MotionLink
             href="/projects"
             variants={itemVariants}
-            whileHover={hoverEffect} // Efek Hover
+            whileHover={hoverEffect}
             whileTap={{ scale: 0.98 }}
             className="group relative md:col-span-2 rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-card shadow-sm cursor-pointer"
           >
@@ -111,7 +104,7 @@ export default function Home() {
             </div>
           </MotionLink>
 
-          {/* B. ABOUT ME */}
+          {/* B. ABOUT ME (DIKEMBALIKAN KE ASAL) */}
           <MotionLink
             href="/about"
             variants={itemVariants}
@@ -120,6 +113,7 @@ export default function Home() {
             className="group relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-card flex flex-col items-center justify-center p-6 text-center shadow-sm cursor-pointer"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-50/80 dark:to-background/80 z-0" />
+
             <div className="h-16 w-16 rounded-2xl bg-white dark:bg-muted mb-4 overflow-hidden relative rotate-3 group-hover:rotate-0 transition-all duration-300 border border-zinc-200 dark:border-zinc-800 shadow-xl z-10">
               <Image
                 src={RESUME_DATA.avatarUrl}
@@ -128,12 +122,16 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
+
             <h3 className="text-base font-bold text-foreground z-10">
               {t.sections.about}
             </h3>
+
+            {/* KEMBALI KE ORIGINAL: text-xs, mt-1, t.sections.about_desc */}
             <p className="text-xs text-muted-foreground mt-1 font-medium z-10">
               {t.sections.about_desc}
             </p>
+
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity z-10">
               <ArrowUpRight className="h-4 w-4 text-blue-500" />
             </div>
@@ -147,7 +145,6 @@ export default function Home() {
             whileTap={{ scale: 0.98 }}
             className="group relative rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-card p-6 flex flex-col justify-end shadow-sm cursor-pointer"
           >
-            {/* Background Image Tipis untuk variasi (Optional) */}
             <div className="absolute inset-0 bg-gradient-to-br from-zinc-50/40 dark:from-background/40 to-zinc-50/90 dark:to-background/90 z-0" />
 
             <Trophy className="h-10 w-10 text-yellow-500 mb-auto relative z-10 drop-shadow-md group-hover:scale-110 transition-transform duration-300" />
@@ -186,7 +183,7 @@ export default function Home() {
             </div>
           </MotionLink>
 
-          {/* E. SERVICES (Non-Link / Info Card) */}
+          {/* E. SERVICES */}
           <motion.div
             variants={itemVariants}
             whileHover={hoverEffect}
@@ -213,7 +210,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer / Contact Section */}
       <motion.div
         variants={itemVariants}
         className="border-t border-zinc-200 dark:border-zinc-800/50 pt-12"

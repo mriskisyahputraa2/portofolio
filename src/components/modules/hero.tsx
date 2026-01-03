@@ -33,7 +33,9 @@ export function Hero() {
 
       {/* 2. Description / Summary */}
       <p className="text-zinc-600 dark:text-zinc-400 text-base leading-relaxed border-l-2 border-zinc-200 dark:border-zinc-800 pl-4">
-        {language === "id" ? RESUME_DATA.summary_id : RESUME_DATA.summary}
+        {language === "id"
+          ? RESUME_DATA.summaryShort_id
+          : RESUME_DATA.summaryShort}
       </p>
 
       {/* 3. Skills Marquee Section */}
