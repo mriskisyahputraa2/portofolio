@@ -50,7 +50,7 @@ export function MobileHeader() {
     { label: t.sidebar.menu.achievements, href: "/achievements", icon: Trophy },
     { label: t.sidebar.menu.projects, href: "/projects", icon: FolderGit2 },
     { label: t.sidebar.menu.dashboard, href: "/dashboard", icon: LayoutGrid },
-    { label: t.sidebar.menu.contact, href: "#contact", icon: Mail },
+    { label: t.sidebar.menu.contact, href: "/contact", icon: Mail },
   ];
 
   return (

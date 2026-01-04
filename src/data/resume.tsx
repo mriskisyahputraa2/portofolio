@@ -1,4 +1,10 @@
-import { GitHubIcon, LinkedInIcon, InstagramIcon } from "@/components/icons";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  InstagramIcon,
+  ThreadsIcon,
+  TikTokIcon,
+} from "@/components/icons";
 
 export const RESUME_DATA = {
   name: "Muhammad Rizki Syahputra",
@@ -51,6 +57,16 @@ Salam hangat,`,
         name: "Instagram",
         url: "https://www.instagram.com/mrizkisyahputraa/",
         icon: InstagramIcon,
+      },
+      {
+        name: "Threads",
+        url: "https://www.threads.net/@mrizkisyahputraa",
+        icon: ThreadsIcon,
+      },
+      {
+        name: "TikTok",
+        url: "https://www.tiktok.com/@mrizkisyahputraa",
+        icon: TikTokIcon,
       },
     ],
   },

@@ -14,8 +14,6 @@ import {
   BadgeCheck,
   SunMedium,
   MoonStar,
-  // Kita hapus import Github, Linkedin, Instagram dari sini
-  // Karena kita akan pakai icon dari data resume.tsx langsung
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
@@ -33,13 +31,19 @@ export function Sidebar() {
     setMounted(true);
   }, []);
 
+  // Filter Sosmed: Hanya ambil GitHub & LinkedIn
+  const github = RESUME_DATA.contact.social.find((s) => s.name === "GitHub");
+  const linkedin = RESUME_DATA.contact.social.find(
+    (s) => s.name === "LinkedIn"
+  );
+
   const NAV_ITEMS = [
     { label: t.sidebar.menu.home, href: "/", icon: LayoutDashboard },
     { label: t.sidebar.menu.about, href: "/about", icon: UserCircle },
     { label: t.sidebar.menu.projects, href: "/projects", icon: FolderGit2 },
     { label: t.sidebar.menu.achievements, href: "/achievements", icon: Trophy },
     { label: t.sidebar.menu.dashboard, href: "/dashboard", icon: LayoutGrid },
-    { label: t.sidebar.menu.contact, href: "#contact", icon: Mail },
+    { label: t.sidebar.menu.contact, href: "/contact", icon: Mail },
   ];
 
   return (
@@ -109,31 +113,41 @@ export function Sidebar() {
           </Button>
         </div>
 
+        {/* --- SOSIAL MEDIA (CUSTOM FILTERED & COLORED) --- */}
         <div className="flex gap-3 mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800/50 w-full justify-center flex-wrap">
-          {/* Loop untuk Sosial Media (GitHub, LinkedIn, Instagram, dll) */}
-          {RESUME_DATA.contact.social.map((social) => (
+          {/* 1. GITHUB (Black/White) */}
+          {github && (
             <Link
-              key={social.name}
-              href={social.url}
+              href={github.url}
               target="_blank"
-              className="text-zinc-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800 group"
+              className="p-2 rounded-full transition-all shadow-sm hover:scale-110 bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
             >
-              {/* Mengambil Icon langsung dari data resume.tsx */}
-              <social.icon className="h-4 w-4" />
+              <github.icon className="h-4 w-4" />
             </Link>
-          ))}
+          )}
 
-          {/* Email (Tetap Manual karena formatnya mailto:) */}
+          {/* 2. LINKEDIN (Official Blue) */}
+          {linkedin && (
+            <Link
+              href={linkedin.url}
+              target="_blank"
+              className="p-2 rounded-full transition-all shadow-sm hover:scale-110 bg-[#0077b5] text-white hover:bg-[#005e93]"
+            >
+              <linkedin.icon className="h-4 w-4" />
+            </Link>
+          )}
+
+          {/* 3. EMAIL (Gmail Red) */}
           <Link
             href={`mailto:${RESUME_DATA.contact.email}`}
-            className="text-zinc-500 hover:text-red-600 dark:hover:text-red-400 transition-colors bg-zinc-100 dark:bg-zinc-900/50 p-2 rounded-full hover:bg-zinc-200 dark:hover:bg-zinc-800"
+            className="p-2 rounded-full transition-all shadow-sm hover:scale-110 bg-[#EA4335] text-white hover:bg-[#c9302c]"
           >
             <Mail className="h-4 w-4" />
           </Link>
         </div>
       </div>
 
-      {/* 2. NAVIGASI (Tidak berubah) */}
+      {/* 2. NAVIGASI */}
       <nav className="flex flex-col gap-1 w-full px-3 mt-2">
         <p className="px-2 text-[10px] font-medium text-zinc-500 mb-2 uppercase tracking-wider">
           {t.sidebar.platform}
