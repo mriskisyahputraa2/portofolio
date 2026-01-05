@@ -24,8 +24,7 @@ export default function ProjectsPage() {
           {t.sections.projects}
         </h1>
         <p className="text-zinc-600 dark:text-zinc-400">
-          A collection of projects I&apos;ve built, ranging from mobile apps to
-          web platforms.
+          {t.projects.description}
         </p>
       </motion.div>
 

@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { TechBadge } from "@/components/shared/tech-badge";
 import { motion } from "framer-motion";
 import { use } from "react";
+import { useLanguage } from "@/hooks/use-language";
 
 export default function ProjectDetailPage({
   params,
@@ -26,6 +27,7 @@ export default function ProjectDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  const { t } = useLanguage();
   const project = PROJECTS_DATA.find((p) => p.slug === slug);
 
   if (!project) notFound();
@@ -34,7 +36,6 @@ export default function ProjectDetailPage({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      // PERBAIKAN 1: Gunakan 'max-w-5xl' agar lebar konsisten dengan About Page
       className="max-w-5xl pb-20"
     >
       <Link
@@ -42,7 +43,7 @@ export default function ProjectDetailPage({
         className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-emerald-600 dark:hover:text-emerald-400 mb-8 transition-colors group"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-        Back to Projects
+        {t.projects.back}
       </Link>
 
       <div className="space-y-6 mb-10">
@@ -80,8 +81,12 @@ export default function ProjectDetailPage({
                     className="rounded-full gap-2 h-10 px-5 border-zinc-200 dark:border-zinc-700"
                   >
                     <Github className="w-4 h-4" />
-                    <span className="hidden sm:inline">Source Code</span>
-                    <span className="sm:hidden">Code</span>
+                    <span className="hidden sm:inline">
+                      {t.projects.sourceCode}
+                    </span>
+                    <span className="sm:hidden">
+                      {t.projects.sourceCodeMobile}
+                    </span>
                   </Button>
                 </a>
               )}
@@ -97,7 +102,7 @@ export default function ProjectDetailPage({
                     className="rounded-full gap-2 h-10 px-5 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-semibold shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
                     <Globe className="w-4 h-4" />
-                    <span>Live Demo</span>
+                    <span>{t.projects.liveDemo}</span>
                     <ExternalLink className="w-3 h-3 ml-0.5 opacity-50" />
                   </Button>
                 </a>
@@ -121,7 +126,7 @@ export default function ProjectDetailPage({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 py-6 border-y border-zinc-200 dark:border-zinc-800">
           <div className="space-y-2">
             <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-              <User className="w-3 h-3" /> My Role
+              <User className="w-3 h-3" /> {t.projects.myRole}
             </span>
             <p className="font-medium text-zinc-900 dark:text-zinc-100 text-base">
               {project.role}
@@ -129,7 +134,7 @@ export default function ProjectDetailPage({
           </div>
           <div className="space-y-2 flex flex-col sm:items-end">
             <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-              <Layers className="w-3 h-3" /> Tech Stack
+              <Layers className="w-3 h-3" /> {t.projects.techStack}
             </span>
             <div className="flex flex-wrap gap-2 sm:justify-end">
               {project.techStack.map((t) => (
@@ -143,7 +148,7 @@ export default function ProjectDetailPage({
       <div className="prose prose-zinc dark:prose-invert max-w-none space-y-12">
         <section>
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-4">
-            Overview
+            {t.projects.overview}
           </h2>
           <p className="text-zinc-600 dark:text-zinc-300 leading-relaxed text-lg">
             {project.description}
@@ -153,7 +158,7 @@ export default function ProjectDetailPage({
         <div className="grid md:grid-cols-2 gap-6 not-prose">
           <div className="bg-red-50/50 dark:bg-red-900/10 p-6 rounded-2xl border border-red-100 dark:border-red-900/20">
             <h3 className="text-lg font-bold text-red-700 dark:text-red-400 mb-3 flex items-center gap-2">
-              The Problem
+              {t.projects.problem}
             </h3>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
               {project.problem}
@@ -162,7 +167,7 @@ export default function ProjectDetailPage({
 
           <div className="bg-emerald-50/50 dark:bg-emerald-900/10 p-6 rounded-2xl border border-emerald-100 dark:border-emerald-900/20">
             <h3 className="text-lg font-bold text-emerald-700 dark:text-emerald-400 mb-3 flex items-center gap-2">
-              The Solution
+              {t.projects.solution}
             </h3>
             <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
               {project.solution}
@@ -172,7 +177,7 @@ export default function ProjectDetailPage({
 
         <section className="not-prose">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6 flex items-center gap-2">
-            Key Features
+            {t.projects.keyFeatures}
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {project.features.map((feature, idx) => (

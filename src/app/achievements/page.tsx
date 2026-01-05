@@ -14,7 +14,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+import { useLanguage } from "@/hooks/use-language";
+import { DICTIONARY } from "@/data/dictionary";
 
 // Konfigurasi Kategori & Ikonnya
 const categories = [
@@ -24,8 +25,22 @@ const categories = [
   { name: "Award", icon: Award },
 ] as const;
 
+type CategoryName = (typeof categories)[number]["name"];
+
 export default function AchievementsPage() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [activeCategory, setActiveCategory] = useState<CategoryName>("All");
+  const { t } = useLanguage();
+
+  // Terjemahan untuk kategori
+  const categoryTranslations: Record<
+    CategoryName,
+    string
+  > = {
+    All: t.achievements.filterAll,
+    Certification: t.achievements.filterCertification,
+    Competition: t.achievements.filterCompetition,
+    Award: t.achievements.filterAward,
+  };
 
   // Logika Filter Data
   const filteredData =
@@ -47,10 +62,10 @@ export default function AchievementsPage() {
           </div>
           <div>
             <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
-              Achievements
+              {t.achievements.title}
             </h1>
             <p className="text-zinc-500 font-medium">
-              Certifications, awards, and competition milestones.
+              {t.achievements.description}
             </p>
           </div>
         </div>
@@ -81,7 +96,7 @@ export default function AchievementsPage() {
               `}
             >
               <Icon className="w-4 h-4" />
-              {cat.name}
+              {categoryTranslations[cat.name]}
             </button>
           );
         })}
@@ -91,7 +106,7 @@ export default function AchievementsPage() {
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AnimatePresence mode="popLayout">
           {filteredData.map((item) => (
-            <AchievementCard key={item.id} item={item} />
+            <AchievementCard key={item.id} item={item} t={t} />
           ))}
         </AnimatePresence>
 
@@ -101,7 +116,7 @@ export default function AchievementsPage() {
             animate={{ opacity: 1 }}
             className="col-span-full py-20 text-center text-zinc-500"
           >
-            <p>No achievements found in this category yet.</p>
+            <p>{t.achievements.emptyState}</p>
           </motion.div>
         )}
       </motion.div>
@@ -110,7 +125,13 @@ export default function AchievementsPage() {
 }
 
 // --- SUB-COMPONENT: CARD ---
-function AchievementCard({ item }: { item: Achievement }) {
+function AchievementCard({
+  item,
+  t,
+}: {
+  item: Achievement;
+  t: typeof DICTIONARY.en;
+}) {
   // Warna Badge Berdasarkan Kategori
   const getBadgeColor = (cat: string) => {
     switch (cat) {
@@ -123,6 +144,12 @@ function AchievementCard({ item }: { item: Achievement }) {
       default:
         return "bg-zinc-500/10 text-zinc-600";
     }
+  };
+
+  const categoryTranslations: Record<string, string> = {
+    Certification: t.achievements.filterCertification,
+    Competition: t.achievements.filterCompetition,
+    Award: t.achievements.filterAward,
   };
 
   return (
@@ -150,7 +177,7 @@ function AchievementCard({ item }: { item: Achievement }) {
               className="rounded-full gap-2 font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
             >
               <ExternalLink className="w-4 h-4" />
-              View Proof
+              {t.achievements.viewProof}
             </Button>
           </a>
         </div>
@@ -164,7 +191,7 @@ function AchievementCard({ item }: { item: Achievement }) {
             variant="outline"
             className={`rounded-md border ${getBadgeColor(item.category)}`}
           >
-            {item.category}
+            {categoryTranslations[item.category] || item.category}
           </Badge>
           <span className="text-xs font-mono text-zinc-500 flex items-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded-md">
             <Calendar className="w-3 h-3" />

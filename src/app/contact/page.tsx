@@ -16,8 +16,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/hooks/use-language";
 
+// Tipe untuk nama platform yang valid
+type CardPlatform =
+  | "Email"
+  | "Instagram"
+  | "LinkedIn"
+  | "GitHub"
+  | "TikTok"
+  | "Threads";
+
 export default function ContactPage() {
-  const { language } = useLanguage();
+  const { t } = useLanguage();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -44,58 +53,23 @@ export default function ContactPage() {
     visible: { opacity: 1, y: 0 },
   };
 
-  // --- KONFIGURASI STYLE KARTU ---
-  const getCardStyle = (platform: string) => {
+  // --- HANYA MENGEMBALIKAN STYLE BACKGROUND ---
+  const getCardBg = (platform: string) => {
     switch (platform) {
       case "Email":
-        return {
-          bg: "bg-red-600",
-          title: "Stay in Touch",
-          desc: "Reach out via email.",
-          btnText: "Go to Gmail",
-        };
+        return "bg-red-600";
       case "Instagram":
-        return {
-          bg: "bg-gradient-to-bl from-purple-600 via-pink-500 to-orange-400",
-          title: "Follow My Journey",
-          desc: "Follow my creative journey.",
-          btnText: "Go to Instagram",
-        };
+        return "bg-gradient-to-bl from-purple-600 via-pink-500 to-orange-400";
       case "LinkedIn":
-        return {
-          bg: "bg-[#0077b5]",
-          title: "Let's Connect",
-          desc: "Connect professionally.",
-          btnText: "Go to LinkedIn",
-        };
+        return "bg-[#0077b5]";
       case "GitHub":
-        return {
-          bg: "bg-[#0d1117] dark:bg-[#161b22]",
-          title: "Explore the Code",
-          desc: "Check my repositories.",
-          btnText: "Go to GitHub",
-        };
+        return "bg-[#0d1117] dark:bg-[#161b22]";
       case "TikTok":
-        return {
-          bg: "bg-zinc-800",
-          title: "Join the Fun",
-          desc: "Watch fun content.",
-          btnText: "Go to TikTok",
-        };
+        return "bg-zinc-800";
       case "Threads":
-        return {
-          bg: "bg-black",
-          title: "Think & Thread",
-          desc: "Read my latest thoughts.",
-          btnText: "Go to Threads",
-        };
+        return "bg-black";
       default:
-        return {
-          bg: "bg-emerald-600",
-          title: "Social Media",
-          desc: "Connect with me.",
-          btnText: "Visit Profile",
-        };
+        return "bg-emerald-600";
     }
   };
 
@@ -113,13 +87,10 @@ export default function ContactPage() {
       >
         <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight flex items-center gap-3">
           <Mail className="w-8 h-8 text-emerald-500" />
-          {language === "id" ? "Hubungi Saya" : "Get in Touch"}
+          {t.contactPage.title}
         </h1>
-        {/* UPDATE TEKS DI SINI */}
         <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl text-lg leading-relaxed">
-          {language === "id"
-            ? "Tertarik untuk berkolaborasi atau punya pertanyaan? Jangan ragu untuk menghubungi saya. Saya selalu terbuka untuk mendiskusikan proyek baru, ide kreatif, atau peluang untuk menjadi bagian dari visi Anda."
-            : "Interested in collaborating or have a question? Feel free to reach out. I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions."}
+          {t.contactPage.description}
         </p>
       </motion.div>
 
@@ -128,32 +99,31 @@ export default function ContactPage() {
         <motion.div variants={itemVariants} className="lg:col-span-7 space-y-6">
           <div className="space-y-2 mb-6">
             <h3 className="font-bold text-lg text-zinc-900 dark:text-zinc-100">
-              {language === "id" ? "Temukan Saya di" : "Find Me on"}
+              {t.contactPage.findMeOn}
             </h3>
-            <p className="text-sm text-zinc-500">
-              Direct access to my profiles.
-            </p>
+            <p className="text-sm text-zinc-500">{t.contactPage.findMeOnDesc}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* A. KARTU EMAIL */}
             {(() => {
-              const style = getCardStyle("Email");
+              const cardText = t.contactPage.cards.email;
               return (
                 <a
                   href={`mailto:${RESUME_DATA.contact.email}`}
-                  className={`group relative p-6 rounded-3xl ${style.bg} text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl`}
+                  className={`group relative p-6 rounded-3xl ${getCardBg(
+                    "Email"
+                  )} text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl`}
                 >
                   <div className="relative z-10 flex flex-col h-full justify-between min-h-[120px]">
                     <div>
-                      <h3 className="text-xl font-bold">{style.title}</h3>
+                      <h3 className="text-xl font-bold">{cardText.title}</h3>
                       <p className="text-xs text-white/90 mt-1 font-medium">
-                        {style.desc}
+                        {cardText.desc}
                       </p>
                     </div>
-
                     <div className="mt-6 flex items-center gap-2 px-4 py-2 bg-white text-black w-fit rounded-lg text-sm font-bold shadow-sm group-hover:bg-zinc-100 transition-colors">
-                      {style.btnText}
+                      {cardText.btnText}
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -164,7 +134,9 @@ export default function ContactPage() {
 
             {/* B. KARTU SOSMED LAINNYA */}
             {RESUME_DATA.contact.social.map((social) => {
-              const style = getCardStyle(social.name);
+              const platformKey = social.name.toLowerCase() as keyof typeof t.contactPage.cards;
+              const cardText =
+                t.contactPage.cards[platformKey] || t.contactPage.cards.default;
               const Icon = social.icon;
 
               return (
@@ -173,22 +145,22 @@ export default function ContactPage() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`group relative p-6 rounded-3xl ${style.bg} text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl`}
+                  className={`group relative p-6 rounded-3xl ${getCardBg(
+                    social.name
+                  )} text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl`}
                 >
                   <div className="relative z-10 flex flex-col h-full justify-between min-h-[120px]">
                     <div>
-                      <h3 className="text-xl font-bold">{style.title}</h3>
+                      <h3 className="text-xl font-bold">{cardText.title}</h3>
                       <p className="text-xs text-white/90 mt-1 font-medium">
-                        {style.desc}
+                        {cardText.desc}
                       </p>
                     </div>
-
                     <div className="mt-6 flex items-center gap-2 px-4 py-2 bg-white text-black w-fit rounded-lg text-sm font-bold shadow-sm group-hover:bg-zinc-100 transition-colors">
-                      {style.btnText}
+                      {cardText.btnText}
                       <ArrowUpRight className="w-4 h-4" />
                     </div>
                   </div>
-
                   <div className="absolute bottom-5 right-5 text-white opacity-100">
                     <Icon className="w-16 h-16" />
                   </div>
@@ -208,27 +180,23 @@ export default function ContactPage() {
             >
               <div className="space-y-1">
                 <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                  {language === "id"
-                    ? "Kirim Pesan Cepat"
-                    : "Send a Quick Message"}
+                  {t.contactPage.formTitle}
                 </h3>
                 <p className="text-sm text-zinc-500">
-                  {language === "id"
-                    ? "Langsung terhubung ke email saya."
-                    : "Connects directly to my email inbox."}
+                  {t.contactPage.formDescription}
                 </p>
               </div>
 
               <div className="space-y-4">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
-                    {language === "id" ? "Nama" : "Name"}
+                    {t.contactPage.formLabelName}
                   </label>
                   <div className="relative">
                     <User className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
                     <Input
                       required
-                      placeholder="John Doe"
+                      placeholder={t.contactPage.formPlaceholderName}
                       className="pl-10 h-11 bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
                       value={formData.name}
                       onChange={(e) =>
@@ -240,14 +208,14 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
-                    Email
+                    {t.contactPage.formLabelEmail}
                   </label>
                   <div className="relative">
                     <AtSign className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
                     <Input
                       required
                       type="email"
-                      placeholder="john@example.com"
+                      placeholder={t.contactPage.formPlaceholderEmail}
                       className="pl-10 h-11 bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
                       value={formData.email}
                       onChange={(e) =>
@@ -259,17 +227,13 @@ export default function ContactPage() {
 
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
-                    {language === "id" ? "Pesan" : "Message"}
+                    {t.contactPage.formLabelMessage}
                   </label>
                   <div className="relative">
                     <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
                     <Textarea
                       required
-                      placeholder={
-                        language === "id"
-                          ? "Halo, saya ingin..."
-                          : "Hello, I want to..."
-                      }
+                      placeholder={t.contactPage.formPlaceholderMessage}
                       className="pl-10 min-h-[140px] bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 resize-none transition-all"
                       value={formData.message}
                       onChange={(e) =>
@@ -285,7 +249,7 @@ export default function ContactPage() {
                 className="w-full bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-zinc-100 dark:text-zinc-900 font-bold h-12 rounded-xl shadow-lg transition-transform hover:-translate-y-1"
               >
                 <Send className="w-4 h-4 mr-2" />
-                {language === "id" ? "Kirim Sekarang" : "Send Now"}
+                {t.contactPage.formButton}
               </Button>
             </form>
           </div>

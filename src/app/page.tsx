@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 const MotionLink = motion(Link);
 
 export default function Home() {
-  const { t } = useLanguage(); // Hapus 'language' jika tidak dipakai di sini
+  const { t } = useLanguage();
   const showcaseProject = RESUME_DATA.projects[0];
 
   const containerVariants = {

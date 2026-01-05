@@ -7,6 +7,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutPage() {
   const { t, language } = useLanguage();
@@ -66,13 +67,13 @@ export default function AboutPage() {
               <Quote className="w-8 h-8 text-emerald-500/30 mb-3 fill-emerald-500/10" />
 
               <p className="text-sm font-medium italic text-zinc-600 dark:text-zinc-300 leading-relaxed">
-                "First, solve the problem. Then, write the code."
+                {t.about.quote}
               </p>
 
               <div className="flex items-center gap-2 mt-3">
                 <span className="w-6 h-[1px] bg-zinc-300 dark:bg-zinc-700"></span>
                 <span className="text-xs font-mono text-zinc-400 uppercase tracking-wider">
-                  John Johnson
+                  {t.about.quoteAuthor}
                 </span>
                 <span className="w-6 h-[1px] bg-zinc-300 dark:bg-zinc-700"></span>
               </div>
@@ -106,8 +107,6 @@ export default function AboutPage() {
                 .map(
                   (paragraph, index) =>
                     paragraph.trim() && (
-                      // PERBAIKAN DI SINI:
-                      // Menggunakan 'text-left' agar selalu Rata Kiri di HP maupun Laptop
                       <p key={index} className="mb-4 text-left">
                         {paragraph}
                       </p>
@@ -127,19 +126,19 @@ export default function AboutPage() {
                   className="rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
                   <Download className="h-4 w-4 mr-2" />
-                  Download CV
+                  {t.about.downloadCV}
                 </Button>
               </a>
-              <a href={`mailto:${RESUME_DATA.contact.email}`}>
+              <Link href="/contact">
                 <Button
                   size="lg"
                   variant="outline"
                   className="rounded-full border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:-translate-y-1 transition-all duration-300"
                 >
                   <Mail className="h-4 w-4 mr-2" />
-                  Contact Me
+                  {t.about.contactMe}
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -152,7 +151,7 @@ export default function AboutPage() {
             <Briefcase className="h-5 w-5 text-emerald-500" />
           </div>
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            {language === "en" ? "Career History" : "Pengalaman Kerja"}
+            {t.about.careerHistory}
           </h2>
         </div>
 
@@ -180,7 +179,7 @@ export default function AboutPage() {
             <GraduationCap className="h-5 w-5 text-emerald-500" />
           </div>
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            {language === "en" ? "Education" : "Pendidikan"}
+            {t.about.education}
           </h2>
         </div>
 
@@ -196,11 +195,7 @@ export default function AboutPage() {
               end={edu.end}
               location="Indonesia"
               status="Student"
-              description={
-                language === "id"
-                  ? "Fokus pada Rekayasa Perangkat Lunak dan Jaringan."
-                  : "Focused on Software Engineering and Network."
-              }
+              description={t.about.educationDesc}
             />
           ))}
         </div>
