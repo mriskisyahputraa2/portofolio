@@ -10,23 +10,20 @@ import {
   User,
   MessageSquare,
   AtSign,
+  Loader2, // Icon loading
+  CheckCircle2, // Icon sukses
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/hooks/use-language";
 
-// Tipe untuk nama platform yang valid
-type CardPlatform =
-  | "Email"
-  | "Instagram"
-  | "LinkedIn"
-  | "GitHub"
-  | "TikTok"
-  | "Threads";
-
 export default function ContactPage() {
   const { t } = useLanguage();
+
+  // --- STATE BARU UNTUK LOADING & SUKSES ---
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -34,13 +31,42 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSendMessage = (e: React.FormEvent) => {
+  // --- LOGIKA PENGIRIMAN BARU (FORMSPREE) ---
+  const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = `New Message from ${formData.name}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    window.location.href = `mailto:${
-      RESUME_DATA.contact.email
-    }?subject=${encodeURIComponent(subject)}&body=${body}`;
+    setIsSubmitting(true);
+
+    // GANTI ID DI BAWAH INI DENGAN ID FORMSPREE ANDA
+    const FORMSPREE_ID = "mbdlvqbw";
+
+    try {
+      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", message: "" }); // Reset form
+
+        // Reset pesan sukses setelah 5 detik
+        setTimeout(() => setIsSuccess(false), 5000);
+      } else {
+        alert("Gagal mengirim pesan. Silakan coba lagi.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Terjadi kesalahan koneksi.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const containerVariants = {
@@ -53,7 +79,6 @@ export default function ContactPage() {
     visible: { opacity: 1, y: 0 },
   };
 
-  // --- HANYA MENGEMBALIKAN STYLE BACKGROUND ---
   const getCardBg = (platform: string) => {
     switch (platform) {
       case "Email":
@@ -177,84 +202,129 @@ export default function ContactPage() {
         <motion.div variants={itemVariants} className="lg:col-span-5">
           <div className="sticky top-24">
             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 rounded-[2rem] blur-xl opacity-50" />
-            <form
-              onSubmit={handleSendMessage}
-              className="relative p-8 rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl space-y-6"
-            >
-              <div className="space-y-1">
-                <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                  {t.contactPage.formTitle}
-                </h3>
-                <p className="text-sm text-zinc-500">
-                  {t.contactPage.formDescription}
-                </p>
-              </div>
 
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
-                    {t.contactPage.formLabelName}
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
-                    <Input
-                      required
-                      placeholder={t.contactPage.formPlaceholderName}
-                      className="pl-10 h-11 bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
-                    {t.contactPage.formLabelEmail}
-                  </label>
-                  <div className="relative">
-                    <AtSign className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
-                    <Input
-                      required
-                      type="email"
-                      placeholder={t.contactPage.formPlaceholderEmail}
-                      className="pl-10 h-11 bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
-                      value={formData.email}
-                      onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
-                      }
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
-                    {t.contactPage.formLabelMessage}
-                  </label>
-                  <div className="relative">
-                    <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
-                    <Textarea
-                      required
-                      placeholder={t.contactPage.formPlaceholderMessage}
-                      className="pl-10 min-h-[140px] bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 resize-none transition-all"
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <Button
-                type="submit"
-                className="w-full bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-zinc-100 dark:text-zinc-900 font-bold h-12 rounded-xl shadow-lg transition-transform hover:-translate-y-1"
+            {/* TAMPILAN JIKA SUKSES TERKIRIM */}
+            {isSuccess ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="relative p-8 rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl flex flex-col items-center justify-center text-center min-h-[400px] space-y-4"
               >
-                <Send className="w-4 h-4 mr-2" />
-                {t.contactPage.formButton}
-              </Button>
-            </form>
+                <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                  <CheckCircle2 className="w-10 h-10 text-green-600 dark:text-green-400" />
+                </div>
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+                  Pesan Terkirim!
+                </h3>
+                <p className="text-zinc-500">
+                  Terima kasih telah menghubungi saya. Saya akan membalas email
+                  Anda sesegera mungkin.
+                </p>
+                <Button
+                  onClick={() => setIsSuccess(false)}
+                  variant="outline"
+                  className="mt-4"
+                >
+                  Kirim pesan lagi
+                </Button>
+              </motion.div>
+            ) : (
+              /* FORMULIR NORMAL */
+              <form
+                onSubmit={handleSendMessage}
+                className="relative p-8 rounded-[2rem] bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl space-y-6"
+              >
+                <div className="space-y-1">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
+                    {t.contactPage.formTitle}
+                  </h3>
+                  <p className="text-sm text-zinc-500">
+                    {t.contactPage.formDescription}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
+                      {t.contactPage.formLabelName}
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
+                      <Input
+                        required
+                        name="name" // Penting untuk Formspree
+                        placeholder={t.contactPage.formPlaceholderName}
+                        className="pl-10 h-11 bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                        value={formData.name}
+                        disabled={isSubmitting}
+                        onChange={(e) =>
+                          setFormData({ ...formData, name: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
+                      {t.contactPage.formLabelEmail}
+                    </label>
+                    <div className="relative">
+                      <AtSign className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
+                      <Input
+                        required
+                        type="email"
+                        name="email" // Penting untuk Formspree
+                        placeholder={t.contactPage.formPlaceholderEmail}
+                        className="pl-10 h-11 bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
+                        value={formData.email}
+                        disabled={isSubmitting}
+                        onChange={(e) =>
+                          setFormData({ ...formData, email: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-wider text-zinc-400 pl-1">
+                      {t.contactPage.formLabelMessage}
+                    </label>
+                    <div className="relative">
+                      <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-zinc-400" />
+                      <Textarea
+                        required
+                        name="message" // Penting untuk Formspree
+                        placeholder={t.contactPage.formPlaceholderMessage}
+                        className="pl-10 min-h-[140px] bg-zinc-50 dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 rounded-xl focus:ring-emerald-500/20 focus:border-emerald-500 resize-none transition-all"
+                        value={formData.message}
+                        disabled={isSubmitting}
+                        onChange={(e) =>
+                          setFormData({ ...formData, message: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-zinc-900 dark:bg-zinc-100 hover:bg-zinc-800 dark:hover:bg-zinc-200 text-zinc-100 dark:text-zinc-900 font-bold h-12 rounded-xl shadow-lg transition-transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      {t.contactPage.formButton}
+                    </>
+                  )}
+                </Button>
+              </form>
+            )}
           </div>
         </motion.div>
       </div>
