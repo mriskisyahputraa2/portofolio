@@ -88,11 +88,11 @@ export const DICTIONARY = {
       formTitle: "Send a Quick Message",
       formDescription: "Connects directly to my email inbox.",
       formLabelName: "Name",
-      formPlaceholderName: "John Doe",
+      formPlaceholderName: "Nama",
       formLabelEmail: "Email",
-      formPlaceholderEmail: "john@example.com",
+      formPlaceholderEmail: "Email",
       formLabelMessage: "Message",
-      formPlaceholderMessage: "Hello, I want to...",
+      formPlaceholderMessage: "Message",
       formButton: "Send Now",
       cards: {
         email: {
@@ -223,11 +223,11 @@ export const DICTIONARY = {
       formTitle: "Kirim Pesan Cepat",
       formDescription: "Langsung terhubung ke email saya.",
       formLabelName: "Nama",
-      formPlaceholderName: "John Doe",
+      formPlaceholderName: "Nama",
       formLabelEmail: "Email",
-      formPlaceholderEmail: "john@example.com",
+      formPlaceholderEmail: "Email",
       formLabelMessage: "Pesan",
-      formPlaceholderMessage: "Halo, saya ingin...",
+      formPlaceholderMessage: "Message",
       formButton: "Kirim Sekarang",
       cards: {
         email: {

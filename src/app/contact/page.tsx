@@ -101,7 +101,9 @@ export default function ContactPage() {
             <h3 className="font-bold text-lg text-zinc-900 dark:text-zinc-100">
               {t.contactPage.findMeOn}
             </h3>
-            <p className="text-sm text-zinc-500">{t.contactPage.findMeOnDesc}</p>
+            <p className="text-sm text-zinc-500">
+              {t.contactPage.findMeOnDesc}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -134,7 +136,8 @@ export default function ContactPage() {
 
             {/* B. KARTU SOSMED LAINNYA */}
             {RESUME_DATA.contact.social.map((social) => {
-              const platformKey = social.name.toLowerCase() as keyof typeof t.contactPage.cards;
+              const platformKey =
+                social.name.toLowerCase() as keyof typeof t.contactPage.cards;
               const cardText =
                 t.contactPage.cards[platformKey] || t.contactPage.cards.default;
               const Icon = social.icon;
