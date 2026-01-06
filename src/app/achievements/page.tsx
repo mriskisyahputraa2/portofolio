@@ -11,8 +11,8 @@ import {
   ExternalLink,
   Filter,
   Calendar,
+  ArrowUpRight, // Tambahkan icon ini
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/use-language";
 import { DICTIONARY } from "@/data/dictionary";
@@ -32,10 +32,7 @@ export default function AchievementsPage() {
   const { t } = useLanguage();
 
   // Terjemahan untuk kategori
-  const categoryTranslations: Record<
-    CategoryName,
-    string
-  > = {
+  const categoryTranslations: Record<CategoryName, string> = {
     All: t.achievements.filterAll,
     Certification: t.achievements.filterCertification,
     Competition: t.achievements.filterCompetition,
@@ -159,7 +156,7 @@ function AchievementCard({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-emerald-500/50 transition-colors"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50 hover:border-emerald-500/50 dark:hover:border-emerald-500/50 transition-colors"
     >
       {/* A. IMAGE THUMBNAIL */}
       <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-200 dark:bg-zinc-800">
@@ -169,18 +166,20 @@ function AchievementCard({
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        {/* Overlay saat hover */}
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <a href={item.link} target="_blank" rel="noopener noreferrer">
-            <Button
-              variant="secondary"
-              className="rounded-full gap-2 font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-            >
-              <ExternalLink className="w-4 h-4" />
-              {t.achievements.viewProof}
-            </Button>
-          </a>
-        </div>
+
+        {/* --- OVERLAY BARU (MIRIP PROJECT) --- */}
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]"
+        >
+          <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-bold text-white shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <span>{t.achievements.viewProof}</span>
+            <ExternalLink className="w-4 h-4" />
+          </div>
+        </a>
+        {/* ----------------------------------- */}
       </div>
 
       {/* B. CONTENT INFO */}
@@ -201,8 +200,10 @@ function AchievementCard({
 
         {/* Judul & Penyelenggara */}
         <div className="space-y-1">
-          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-tight group-hover:text-emerald-500 transition-colors">
+          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 leading-tight group-hover:text-emerald-500 transition-colors flex items-center gap-2">
             {item.title}
+            {/* Icon panah kecil muncul saat hover di judul juga */}
+            <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-emerald-500" />
           </h3>
           <p className="text-sm text-zinc-500 font-medium">{item.issuer}</p>
         </div>

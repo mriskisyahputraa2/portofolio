@@ -55,6 +55,14 @@ export default function ProjectsPage() {
                 {/* Overlay Gradient (Agar teks badge terbaca) */}
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 via-transparent to-transparent opacity-60" />
 
+                {/* Overlay saat hover */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-sm font-bold text-white shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <span>{t.projects.viewDetail}</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </div>
+                </div>
+
                 <div className="absolute top-4 left-4">
                   <Badge
                     variant="secondary"

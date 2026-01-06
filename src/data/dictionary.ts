@@ -78,6 +78,7 @@ export const DICTIONARY = {
       problem: "The Problem",
       solution: "The Solution",
       keyFeatures: "Key Features",
+      viewDetail: "View Detail",
     },
     contactPage: {
       title: "Get in Touch",
@@ -213,6 +214,7 @@ export const DICTIONARY = {
       problem: "Masalah",
       solution: "Solusi",
       keyFeatures: "Fitur Utama",
+      viewDetail: "Lihat Detail",
     },
     contactPage: {
       title: "Hubungi Saya",
