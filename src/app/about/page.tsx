@@ -2,7 +2,7 @@
 
 import { RESUME_DATA } from "@/data/resume";
 import { ExperienceCard } from "@/components/modules/experience-card";
-import { Download, Briefcase, GraduationCap, Mail, Quote } from "lucide-react";
+import { Briefcase, GraduationCap, Quote, Download, Mail } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -81,9 +81,7 @@ export default function AboutPage() {
           </div>
 
           {/* B. KOLOM KANAN: TEKS DESKRIPSI */}
-          {/* 'text-left' memastikan semua isi di container ini rata kiri */}
           <div className="flex-1 space-y-6 text-left relative z-0">
-            {/* Header Title */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <h1 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">
@@ -95,7 +93,6 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Konten Text (Auto Paragraph) */}
             <div className="prose dark:prose-invert max-w-none text-zinc-600 dark:text-zinc-400 leading-loose text-lg/8 relative">
               <Quote className="absolute -left-8 -top-4 w-6 h-6 text-zinc-200 dark:text-zinc-800 hidden md:block" />
 
@@ -114,13 +111,8 @@ export default function AboutPage() {
                 )}
             </div>
 
-            {/* Tombol Action */}
             <div className="flex flex-wrap gap-4 pt-4">
-              <a
-                href={RESUME_DATA.contact.cvUrl || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 <Button
                   size="lg"
                   className="rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
@@ -164,7 +156,10 @@ export default function AboutPage() {
               company={work.company}
               start={work.start}
               end={work.end}
-              description={work.description}
+              // LOGIKA BARU: Pilih deskripsi ID atau EN
+              description={
+                language === "id" ? work.description_id : work.description
+              }
               location={work.location}
               status={work.badges[0]}
             />
@@ -195,7 +190,10 @@ export default function AboutPage() {
               end={edu.end}
               location="Indonesia"
               status="Student"
-              description={t.about.educationDesc}
+              // PERBAIKAN: Mengambil deskripsi dari RESUME_DATA, bukan text static
+              description={
+                language === "id" ? edu.description_id : edu.description
+              }
             />
           ))}
         </div>

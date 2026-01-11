@@ -23,7 +23,7 @@ I'm Muhammad Rizki Syahputra, a Full Stack Developer based in Aceh, Indonesia. M
 
 With 3 years of experience in software development, my core expertise lies in Laravel for robust backend architecture, followed by Next.js and React for dynamic frontends. Additionally, I develop seamless cross-platform applications using Flutter.
 
-During my studies at Politeknik Negeri Lhokseumawe, I worked on impactful projects like PanganKU and the UPZIS Donation System, which sparked my love for building apps that solve real-world problems.
+During my studies at Lhokseumawe State Polytechnic, I was involved in impactful projects such as the Lhokseumawe State Polytechnic UPZIS Donation System and PanganKU, which sparked my interest in developing applications that can solve real-world problems.
 
 Beyond coding, I thrive on collaboration. My experience leading technical teams has strengthened my soft skills in project management (Scrum) and peer mentoring, emphasizing the importance of solid communication.
 
@@ -39,7 +39,7 @@ Saya Muhammad Rizki Syahputra, seorang Full Stack Developer yang berdomisili di 
 
 Dengan 3 tahun pengalaman dalam pengembangan perangkat lunak, saya memiliki keahlian mendalam terutama pada Laravel untuk backend yang tangguh, diikuti dengan Next.js dan React untuk frontend yang interaktif. Di sisi mobile, saya mengembangkan aplikasi lintas platform menggunakan Flutter.
 
-Selama kuliah di Politeknik Negeri Lhokseumawe, saya berkesempatan mengerjakan proyek berdampak seperti PanganKU dan Sistem Donasi UPZIS. Proyek-proyek ini memicu kecintaan saya untuk membangun aplikasi yang menyelesaikan masalah nyata.
+Selama kuliah di Politeknik Negeri Lhokseumawe, saya berkesempatan mengerjakan proyek berdampak seperti Sistem Donasi UPZIS Politeknik Negeri Lhokseumawe dan PanganKU. Proyek-proyek ini memicu kecintaan saya untuk membangun aplikasi yang menyelesaikan masalah nyata.
 
 Selain coding, saya berkembang melalui kolaborasi. Pengalaman saya memimpin tim teknis telah memperkuat soft skills dalam manajemen proyek (Scrum) dan mentoring rekan kerja, tanpa melupakan pentingnya komunikasi yang solid.
 
@@ -93,12 +93,16 @@ Salam Hormat,`,
     {
       school: "Politeknik Negeri Lhokseumawe",
       href: "https://pnl.ac.id",
-      degree: "Sarjana Terapan (D4) Teknologi Rekayasa Komputer Jaringan",
+      degree: "D-IV Teknologi Rekayasa Komputer Jaringan",
       start: "2023",
       end: "Sekarang",
       logo: "/assets/pnl-logo.png",
+      // Pastikan field ini BAHASA INGGRIS
       description:
-        "Fokus pada Infrastruktur Jaringan, Keamanan Siber, dan Rekayasa Perangkat Lunak. \n Mata Kuliah Utama: Cloud Computing (AWS/Docker), Ethical Hacking & Digital Forensics, Mobile App Dev (Flutter), dan Pemrograman Web Lanjut.",
+        "Study Focus: Computer Networks, Cyber Security, Cloud Computing, IoT, and Application Development.\nLabs: Cloud Computing & DevOps (AWS, Docker), Cyber Security (Ethical Hacking, Digital Forensics), and Web & Mobile App Development.",
+      // Pastikan field ini BAHASA INDONESIA (dan nama fieldnya description_id)
+      description_id:
+        "Fokus Studi: Jaringan Komputer, Keamanan Siber, Cloud Computing, IoT, dan Pengembangan Aplikasi.\nPraktikum: Cloud Computing & DevOps (AWS, Docker), Keamanan Siber (Ethical Hacking, Digital Forensics), serta Pengembangan Aplikasi Web & Mobile.",
     },
   ],
 
@@ -106,50 +110,50 @@ Salam Hormat,`,
     {
       company: "UPZIS Politeknik Negeri Lhokseumawe",
       href: "https://pnl.ac.id",
-      badges: ["Laravel", "Inertia.js", "React", "Tailwind"],
-      location: "Lhokseumawe, Indonesia",
-      title: "Full Stack Web Developer",
-      logoUrl: "/assets/pnl-logo.png",
+      badges: ["Full Stack Web Developer"],
+      location: "Lhokseumawe, Aceh",
+      title: "Web Developer",
+      logoUrl: "/assets/images/careers/logo-pnl.png",
       start: "Sep 2025",
       end: "Nov 2025",
+      // Deskripsi Bahasa Inggris
       description:
-        "Merancang Sistem Informasi Zakat & Donasi yang komprehensif untuk mendigitalkan alur kerja keuangan.\n• Mengembangkan platform donatur dengan fitur Kalkulator Zakat dan gateway pembayaran (Gopay, Dana, Tunai).\n• Membangun Dashboard Admin untuk pemantauan transaksi real-time dan verifikasi Mustahik.",
+        "Designed and built the UPZIS PNL information system to digitize donations.\nImplemented Zakat Calculator, Donation Transactions (Gopay, Dana, Cash), and beneficiary aid workflow (Mustahik).\nBuilt a comprehensive admin panel for data management, transaction verification, and financial report export (PDF/Excel).",
+      // Deskripsi Bahasa Indonesia
+      description_id:
+        "Merancang dan membangun sistem informasi UPZIS PNL untuk mendigitalisasi donasi.\nMengimplementasikan fitur Kalkulator Zakat, Transaksi Donasi (Gopay, Dana, Tunai), dan alur pengajuan bantuan (Mustahik).\nMembangun panel admin untuk manajemen data, verifikasi transaksi, dan ekspor laporan keuangan (PDF/Excel).",
     },
     {
-      company: "UKM Polytechnic Linux Community (POLICY)",
+      company: "Unit Kegiatan Mahasiswa Polytechnic Linux Community",
       href: "#",
-      badges: ["Leadership", "Laravel", "Scrum", "Mentoring"],
-      location: "Lhokseumawe, Indonesia",
-      title: "Head of Programming Division",
-      logoUrl: "/assets/policy-logo.png",
-      start: "2024",
-      end: "2025",
-      description:
-        "Memimpin Divisi Pemrograman, mengawasi pelaksanaan program kerja teknis dan workshop.\n• Memimpin pengembangan end-to-end website resmi UKM POLICY menggunakan Laravel dan React.js.\n• Bertindak sebagai Scrum Master/Tech Lead, mengelola siklus pengembangan dan membimbing anggota junior.",
-    },
-    {
-      company: "UKM Polytechnic Linux Community (POLICY)",
-      href: "#",
-      badges: ["Web Development", "Teamwork"],
-      location: "Lhokseumawe, Indonesia",
-      title: "Web Developer Team",
-      logoUrl: "/assets/policy-logo.png",
+      badges: ["Full Stack Web Developer + Scrum"],
+      location: "Lhokseumawe, Aceh",
+      title: "Web Developer",
+      logoUrl: "/assets/images/careers/logo-ukmpolicy.jpeg",
       start: "Mei 2025",
-      end: "Agus 2025",
+      end: "Agu 2025",
+      // Deskripsi Bahasa Inggris
       description:
-        "Berkolaborasi dalam tim untuk merancang dan mengimplementasikan kehadiran digital organisasi.\n• Fokus pada arsitektur backend menggunakan Laravel untuk memastikan penanganan data yang aman.",
+        "Led the end-to-end design and implementation of the official UKM POLICY website.\nBuilt a dynamic full-stack solution using Laravel (Back-End) and React.js (Front-End).\nResponsible for the development lifecycle while acting as Scrum Master to manage team workflows.",
+      // Deskripsi Bahasa Indonesia
+      description_id:
+        "Memimpin desain dan implementasi end-to-end website resmi UKM POLICY.\nMembangun solusi full-stack dinamis menggunakan Laravel (Back-End) dan React.js (Front-End).\nBertanggung jawab atas development lifecycle sekaligus bertindak sebagai Scrum Master untuk mengelola workflow tim.",
     },
     {
-      company: "Dinas PUPR Lhokseumawe",
+      company: "Dinas PUPR Kota Lhokseumawe",
       href: "#",
-      badges: ["Internship", "Administration"],
-      location: "Lhokseumawe, Indonesia",
-      title: "IT Support Intern",
-      logoUrl: "/assets/pupr-logo.png",
-      start: "Des 2021",
-      end: "Mar 2022",
+      badges: ["Internship"],
+      location: "Lhokseumawe, Aceh",
+      title: "Internship",
+      logoUrl: "/assets/images/careers/logo-pupr.png",
+      start: "Apr 2022",
+      end: "Jun 2022",
+      // Deskripsi Bahasa Inggris
       description:
-        "Mendukung efisiensi operasional Dinas Pekerjaan Umum.\n• Membantu pemrosesan data teknis dan pengarsipan digital untuk dokumentasi proyek kota yang akurat.",
+        "Assisted the team in processing technical data and operational administration.\nCollected and archived official documents and correspondence.\nUtilized office software for data processing and basic design tasks.",
+      // Deskripsi Bahasa Indonesia
+      description_id:
+        "Membantu tim dalam pemrosesan data teknis dan administrasi operasional dinas.\nMelakukan pengumpulan dan pengarsipan dokumen resmi serta surat-menyurat.\nMenggunakan perangkat lunak perkantoran untuk pengolahan data dan desain dasar.",
     },
   ],
 

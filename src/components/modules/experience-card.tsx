@@ -20,7 +20,8 @@ interface ExperienceProps {
   end: string;
   location?: string;
   status?: string;
-  description: string;
+  // Ubah tipe description agar boleh undefined/null jaga-jaga
+  description?: string;
 }
 
 export function ExperienceCard({
@@ -31,7 +32,8 @@ export function ExperienceCard({
   end,
   location,
   status,
-  description,
+  // Berikan default value string kosong agar tidak undefined
+  description = "",
 }: ExperienceProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [imgSrc, setImgSrc] = useState(logo);
@@ -50,7 +52,7 @@ export function ExperienceCard({
       className="group relative w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-card/50 p-5 transition-all hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md"
     >
       <div className="flex flex-col sm:flex-row gap-4 items-start">
-        {/* --- LOGO PERUSAHAAN --- */}
+        {/* LOGO */}
         <div className="relative h-14 w-14 sm:h-16 sm:w-16 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white shrink-0 shadow-sm flex items-center justify-center">
           <Image
             src={imgSrc || fallbackImage}
@@ -62,7 +64,7 @@ export function ExperienceCard({
           />
         </div>
 
-        {/* CONTENT (Sama seperti sebelumnya) */}
+        {/* CONTENT */}
         <div className="flex-1 w-full space-y-2">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
             <div>
@@ -75,7 +77,6 @@ export function ExperienceCard({
               </div>
             </div>
 
-            {/* Date Badge */}
             <div className="flex items-center gap-1.5 text-xs font-mono font-medium text-zinc-500 bg-zinc-100 dark:bg-zinc-800/80 px-2.5 py-1 rounded-full border border-zinc-200 dark:border-zinc-700/50 whitespace-nowrap">
               <Calendar className="h-3 w-3" />
               {start} - {end}
@@ -100,20 +101,23 @@ export function ExperienceCard({
             )}
           </div>
 
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors focus:outline-none mt-2 select-none group/btn"
-          >
-            {isOpen ? (
-              <ChevronUp className="h-3.5 w-3.5" />
-            ) : (
-              <ChevronDown className="h-3.5 w-3.5 group-hover/btn:translate-y-0.5 transition-transform" />
-            )}
-            {isOpen ? "Hide Responsibilities" : "Show Responsibilities"}
-          </button>
+          {/* Tombol hanya muncul jika deskripsi tidak kosong */}
+          {description && (
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors focus:outline-none mt-2 select-none group/btn"
+            >
+              {isOpen ? (
+                <ChevronUp className="h-3.5 w-3.5" />
+              ) : (
+                <ChevronDown className="h-3.5 w-3.5 group-hover/btn:translate-y-0.5 transition-transform" />
+              )}
+              {isOpen ? "Hide Responsibilities" : "Show Responsibilities"}
+            </button>
+          )}
 
           <AnimatePresence>
-            {isOpen && (
+            {isOpen && description && (
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
@@ -122,7 +126,8 @@ export function ExperienceCard({
                 className="overflow-hidden"
               >
                 <div className="pt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed space-y-2 border-t border-zinc-100 dark:border-zinc-800 mt-2 border-dashed">
-                  {description.split("\n").map(
+                  {/* --- BAGIAN PERBAIKAN UTAMA DISINI --- */}
+                  {(description || "").split("\n").map(
                     (item, index) =>
                       item.trim() && (
                         <div key={index} className="flex gap-3 items-start">
