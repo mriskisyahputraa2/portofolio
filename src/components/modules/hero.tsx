@@ -37,11 +37,6 @@ export function Hero() {
           ? RESUME_DATA.summaryShort_id
           : RESUME_DATA.summaryShort}
       </p>
-
-      {/* 3. Skills Marquee Section */}
-      <div className="w-full pt-2">
-        <Skills />
-      </div>
     </section>
   );
 }

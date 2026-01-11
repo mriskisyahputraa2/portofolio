@@ -34,7 +34,6 @@ export const TECH_STACK = [
   { name: "React", icon: SiReact, color: "#61DAFB" },
   { name: "Flutter", icon: SiFlutter, color: "#02569B" },
   { name: "Tailwind", icon: SiTailwindcss, color: "#06B6D4" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
   { name: "Bootstrap", icon: SiBootstrap, color: "#7952B3" },
   { name: "Inertia.js", icon: SiInertia, color: "#9553E9" },
   { name: "Framer Motion", icon: SiFramer, color: "#0099FF" },
