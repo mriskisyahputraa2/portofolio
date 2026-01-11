@@ -180,7 +180,7 @@ export default function ContactSection() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     className="w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-black/50 px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
-                    placeholder="John Doe"
+                    placeholder="Name"
                   />
                 </div>
 
@@ -200,7 +200,7 @@ export default function ContactSection() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     className="w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-black/50 px-4 py-3 text-sm outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all"
-                    placeholder="john@example.com"
+                    placeholder="Email"
                   />
                 </div>
 

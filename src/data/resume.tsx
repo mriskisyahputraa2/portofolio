@@ -16,28 +16,46 @@ export const RESUME_DATA = {
 
   personalWebsiteUrl: "https://your-portfolio.com",
 
-  summary: `Hello there! Thank you for visiting my personal website. I'm Muhammad Rizki Syahputra, a student majoring in Network Computer Engineering at Politeknik Negeri Lhokseumawe. I'm a Full Stack Web & Mobile Developer with a passion for building impactful software products. My stack includes modern frontend technologies like Next.js, React, and Tailwind CSS, as well as backend development using Laravel and PHP. For mobile applications, I develop cross-platform apps using Flutter.
+  // --- 1. HALAMAN ABOUT (Versi Panjang) ---
+  summary: `Hello! Glad to have you on my personal website!
 
-I enjoy creating solutions that are both user-friendly and performant. Whether it's building intuitive interfaces or architecting backend services (REST API), I aim to bring efficiency and clarity into every layer of the application. I’m a fast learner who thrives in dynamic environments, and I enjoy solving complex problems collaboratively.
+I'm Muhammad Rizki Syahputra, a Full Stack Developer based in Aceh, Indonesia. My journey in tech is a blend of coding, leading teams, and crafting digital solutions.
 
-I believe that great communication and team synergy are key to success in software development. My experience, especially as Head of Programming Division at UKM POLICY, has shaped my technical and analytical skills, as well as my leadership qualities. I'm always excited to work in teams, learn from others, and contribute to impactful projects.
+With 3 years of experience in software development, my core expertise lies in Laravel for robust backend architecture, followed by Next.js and React for dynamic frontends. Additionally, I develop seamless cross-platform applications using Flutter.
+
+During my studies at Politeknik Negeri Lhokseumawe, I worked on impactful projects like PanganKU and the UPZIS Donation System, which sparked my love for building apps that solve real-world problems.
+
+Beyond coding, I thrive on collaboration. My experience leading technical teams has strengthened my soft skills in project management (Scrum) and peer mentoring, emphasizing the importance of solid communication.
+
+Currently, I am also deepening my knowledge in Cloud Computing and Cybersecurity to ensure every application I build is not only functional but also secure and scalable.
+
+When I'm not coding, I'm always looking for ways to learn new things. Let's connect and create something amazing together!
 
 Best regards,`,
+  // --- 2. HALAMAN ABOUT (Versi Indonesia) ---
+  summary_id: `Halo! Senang Anda berada di website pribadi saya!
 
-  // 2. VERSI BAHASA INDONESIA (Terjemahan yang disesuaikan)
-  summary_id: `Halo! Terima kasih telah mengunjungi website pribadi saya. Saya Muhammad Rizki Syahputra, mahasiswa Teknologi Rekayasa Komputer Jaringan di Politeknik Negeri Lhokseumawe. Saya seorang Full Stack Web & Mobile Developer yang memiliki semangat untuk membangun produk perangkat lunak yang berdampak. Stack teknologi saya meliputi teknologi frontend modern seperti Next.js, React, dan Tailwind CSS, serta pengembangan backend menggunakan Laravel dan PHP. Untuk aplikasi mobile, saya mengembangkan aplikasi lintas platform menggunakan Flutter.
+Saya Muhammad Rizki Syahputra, seorang Full Stack Developer yang berdomisili di Aceh, Indonesia. Perjalanan saya di dunia teknologi adalah campuran dari coding, memimpin tim, dan menciptakan solusi digital.
 
-Saya senang menciptakan solusi yang ramah pengguna dan berkinerja tinggi. Baik itu membangun antarmuka yang intuitif atau merancang layanan backend (REST API), saya bertujuan untuk menghadirkan efisiensi dan kejelasan di setiap lapisan aplikasi. Saya adalah pembelajar cepat yang berkembang di lingkungan dinamis, dan saya senang memecahkan masalah kompleks secara kolaboratif.
+Dengan 3 tahun pengalaman dalam pengembangan perangkat lunak, saya memiliki keahlian mendalam terutama pada Laravel untuk backend yang tangguh, diikuti dengan Next.js dan React untuk frontend yang interaktif. Di sisi mobile, saya mengembangkan aplikasi lintas platform menggunakan Flutter.
 
-Saya percaya bahwa komunikasi yang baik dan sinergi tim adalah kunci keberhasilan dalam pengembangan perangkat lunak. Pengalaman saya, terutama sebagai Ketua Divisi Pemrograman di UKM POLICY, telah membentuk keterampilan teknis dan analitis saya, serta kualitas kepemimpinan saya. Saya selalu bersemangat untuk bekerja dalam tim, belajar dari orang lain, dan berkontribusi pada proyek-proyek yang berdampak.
+Selama kuliah di Politeknik Negeri Lhokseumawe, saya berkesempatan mengerjakan proyek berdampak seperti PanganKU dan Sistem Donasi UPZIS. Proyek-proyek ini memicu kecintaan saya untuk membangun aplikasi yang menyelesaikan masalah nyata.
 
-Salam hangat,`,
+Selain coding, saya berkembang melalui kolaborasi. Pengalaman saya memimpin tim teknis telah memperkuat soft skills dalam manajemen proyek (Scrum) dan mentoring rekan kerja, tanpa melupakan pentingnya komunikasi yang solid.
 
+Saat ini, saya juga sedang memperdalam ilmu di bidang Cloud Computing dan Keamanan Siber untuk memastikan setiap aplikasi yang saya bangun tidak hanya fungsional, tetapi juga aman dan scalable.
+
+Ketika saya tidak coding, saya selalu mencari cara untuk belajar hal baru. Mari terhubung dan ciptakan sesuatu yang luar biasa bersama!
+
+Salam Hormat,`,
+
+  // --- 3. HERO SECTION (Versi Pendek - Final) ---
   summaryShort:
-    "Experienced Fullstack Developer specializing in scalable digital solutions. On the frontend, I work with Next.js, React, and Tailwind CSS. On the backend, I develop robust services using Laravel, and for mobile, I build cross-platform apps with Flutter.",
+    "Experienced as a Full Stack Developer with 3 years of expertise in Web & Mobile Development. I have a strong track record of engineering scalable digital solutions and integrated ecosystems. Backed by BNSP Certification and proven excellence at the National LKS level, I combine technical proficiency with a disciplined approach. Currently refining my expertise in Computer Network Engineering, which strengthens my understanding of cloud infrastructure and security for every application I build.",
 
+  // --- 4. HERO SECTION (Versi Indonesia - Final) ---
   summaryShort_id:
-    "Fullstack Developer berpengalaman yang fokus pada solusi digital skalabel. Di frontend, saya menggunakan Next.js dan React. Di backend, saya membangun layanan tangguh menggunakan Laravel, dan untuk mobile, saya membuat aplikasi lintas platform dengan Flutter.",
+    "Berpengalaman sebagai Full Stack Developer dengan 3 tahun keahlian dalam pengembangan Web & Mobile. Saya memiliki rekam jejak kuat dalam merekayasa solusi digital yang skalabel dan ekosistem terintegrasi. Didukung oleh Sertifikasi BNSP dan pengalaman kompetitif di LKS Tingkat Nasional, saya menggabungkan kemahiran teknis dengan etos kerja disiplin. Saat ini memperdalam keahlian Teknologi Rekayasa Komputer Jaringan, yang memperkuat pemahaman saya dalam infrastruktur cloud dan keamanan untuk setiap aplikasi yang saya bangun.",
 
   contact: {
     email: "riskideveloper2@gmail.com",
