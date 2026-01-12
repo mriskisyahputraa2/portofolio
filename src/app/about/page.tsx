@@ -112,7 +112,12 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              <a
+                href={RESUME_DATA.contact.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="CV_Muhammad_Rizki_Syahputra.pdf"
+              >
                 <Button
                   size="lg"
                   className="rounded-full bg-zinc-900 dark:bg-zinc-100 text-zinc-100 dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
