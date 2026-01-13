@@ -127,7 +127,7 @@ Salam Hormat,`,
     {
       company: "Unit Kegiatan Mahasiswa Polytechnic Linux Community",
       href: "#",
-      badges: ["Full Stack Web Developer + Scrum"],
+      badges: ["Full Stack Web Developer"],
       location: "Lhokseumawe, Aceh",
       title: "Full Stack Web Developer",
       logoUrl: "/assets/images/careers/logo-ukmpolicy.jpeg",

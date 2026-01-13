@@ -193,6 +193,31 @@ export default function ProjectDetailPage({
             ))}
           </div>
         </section>
+
+        {/* IMAGE GALLERY SECTION */}
+        {project.images && project.images.length > 0 && (
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100 mb-6">
+              Gallery
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {project.images.map((img, idx) => (
+                <div
+                  key={idx}
+                  className="relative aspect-video rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-md bg-zinc-100 dark:bg-zinc-900"
+                >
+                  <Image
+                    src={img}
+                    alt={`${project.title} screenshot ${idx + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </motion.div>
   );

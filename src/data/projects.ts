@@ -26,9 +26,9 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     shortDescription:
       "Integrated E-Grocery ecosystem featuring a Flutter Mobile App for customers and a Laravel Dashboard for vendors.",
     year: "Sep 2025 - Nov 2025",
-    role: "Full Stack Mobile & Web Developer",
-    platform: "Mobile (Android) & Web Application",
-    thumbnail: "/assets/images/projects/panganku.png",
+    role: "Full Stack Web Developer & Mobile",
+    platform: "Web Application & Mobile (Android)",
+    thumbnail: "/assets/images/projects/t-panganku.png",
     images: [
       "/assets/images/projects/panganku-1.png",
       "/assets/images/projects/panganku-2.png",
