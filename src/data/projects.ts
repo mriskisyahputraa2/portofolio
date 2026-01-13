@@ -22,18 +22,23 @@ export interface ProjectDetails {
 export const PROJECTS_DATA: ProjectDetails[] = [
   {
     slug: "panganku-app",
-    title: "PanganKU Ecosystem",
+    title: "E-commerce PanganKU ",
     shortDescription:
       "Integrated E-Grocery ecosystem featuring a Flutter Mobile App for customers and a Laravel Dashboard for vendors.",
     year: "Sep 2025 - Nov 2025",
     role: "Full Stack Web Developer & Mobile",
     platform: "Web Application & Mobile (Android)",
     thumbnail: "/assets/images/projects/t-panganku.png",
-    images: [
-      "/assets/images/projects/panganku-1.png",
-      "/assets/images/projects/panganku-2.png",
+    images: [],
+    techStack: [
+      "Flutter",
+      "Laravel",
+      "React",
+      "MySQL",
+      "REST API",
+      "Tailwind",
+      "Framer Motion",
     ],
-    techStack: ["Flutter", "Laravel", "MySQL", "REST API", "Firebase"],
     description:
       "PanganKU is a comprehensive digital solution designed to bridge the gap between local food producers and consumers. It consists of two main components: a customer-facing mobile application built with Flutter for seamless shopping experiences, and a web-based administration dashboard built with Laravel for inventory and order management.",
     problem:
@@ -52,16 +57,23 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     },
   },
   {
-    slug: "upzis-donation-system",
-    title: "UPZIS Digital Donation",
+    slug: "upzis-pnl",
+    title: "UPZIS Politeknik Negeri Lhokseumawe",
     shortDescription:
       "Digital platform for Zakat and Donation collection with automated reporting and admin verification tools.",
     year: "2025",
     role: "Full Stack Web Developer",
     platform: "Web Application",
-    thumbnail: "/assets/images/projects/upzis-thumb.png",
+    thumbnail: "/assets/images/projects/t-upzis-2.png",
     images: [],
-    techStack: ["Laravel", "Inertia.js", "React", "Tailwind CSS", "MySQL"],
+    techStack: [
+      "Laravel",
+      "Inertia.js",
+      "React",
+      "Tailwind",
+      "MySQL",
+      "Framer Motion",
+    ],
     description:
       "A centralized platform for the Unit Pengumpul Zakat (UPZIS) at Politeknik Negeri Lhokseumawe. This system digitizes the entire donation workflow, from fund collection to distribution tracking, ensuring transparency and accountability.",
     problem:
@@ -76,6 +88,7 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     ],
     links: {
       github: "https://github.com/mriskisyahputraa2",
+      demo: "#",
     },
   },
   {
@@ -86,9 +99,16 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     year: "2025",
     role: "Tech Lead & Full Stack Developer",
     platform: "Web Application",
-    thumbnail: "/assets/images/projects/policy-thumb.png",
+    thumbnail: "/assets/images/projects/t-ukmpolicy.png",
     images: [],
-    techStack: ["Laravel", "React", "Inertia.js"],
+    techStack: [
+      "Laravel",
+      "React",
+      "Inertia.js",
+      "MySQL",
+      "Tailwind",
+      "Framer Motion",
+    ],
     description:
       "The official digital presence for the Polytechnic Linux Community (POLICY). Beyond just a landing page, this system serves as a membership management hub and an event publication platform.",
     problem:
@@ -107,30 +127,37 @@ export const PROJECTS_DATA: ProjectDetails[] = [
     },
   },
   {
-    slug: "policy-official-websites",
-    title: "UKM POLICY Official Sites",
+    slug: "personal-portfolio",
+    title: "Personal Portfolio Website",
     shortDescription:
-      "Official organization website managing member data, events, and blogs. Built with a focus on SEO and performance.",
-    year: "2025",
-    role: "Tech Lead & Full Stack Developer",
+      "A high-performance personal portfolio website built with Next.js 14, featuring bilingual support and smooth animations.",
+    year: "2026",
+    role: "Frontend Developer",
     platform: "Web Application",
-    thumbnail: "/assets/images/projects/policy-thumb.png",
+    thumbnail: "/assets/images/projects/t-portofolio.png",
     images: [],
-    techStack: ["Laravel", "React", "Inertia.js"],
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind",
+      "Framer Motion",
+      "Lucide React",
+    ],
     description:
-      "The official digital presence for the Polytechnic Linux Community (POLICY). Beyond just a landing page, this system serves as a membership management hub and an event publication platform.",
+      "My personal corner on the web. This portfolio was crafted to showcase my projects and technical skills in a clean, modern interface. It leverages the latest Next.js features like App Router for optimal performance and SEO.",
     problem:
-      "The organization lacked a centralized database for members and a professional platform to showcase their activities and articles to the public.",
+      "I needed a professional platform to aggregate my work, experience, and contact information that reflects my current technical capabilities and supports an international audience (Bilingual).",
     solution:
-      "Built a high-performance Single Page Application (SPA) using Inertia.js and Laravel. Implemented a CMS-like feature for administrators to publish blogs and events easily, while maintaining strict Role-Based Access Control (RBAC).",
+      "Developed a responsive web application using Next.js and TypeScript. Implemented a custom internationalization (i18n) system for English/Indonesian support and used Framer Motion for engaging user interactions without sacrificing load speed.",
     features: [
-      "Member Registration & Database",
-      "Blog & Event Management System (CMS)",
-      "Role-Based Access Control (Admin vs Member)",
-      "SEO Optimized Content Rendering",
+      "Bilingual Support (ID/EN)",
+      "Dark / Light Mode Theme",
+      "Responsive Bento Grid Layout",
+      "High Performance & SEO Optimized",
     ],
     links: {
       github: "https://github.com/mriskisyahputraa2",
+      demo: "https://rizkisyahputra.dev",
     },
   },
 ];
