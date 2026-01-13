@@ -97,7 +97,7 @@ Salam Hormat,`,
       degree: "D-IV Teknologi Rekayasa Komputer Jaringan",
       start: "2023",
       end: "Sekarang",
-      logo: "/assets/pnl-logo.png",
+      logo: "/assets/images/careers/logo-pnl.png",
       // Pastikan field ini BAHASA INGGRIS
       description:
         "Study Focus: Computer Networks, Cyber Security, Cloud Computing, IoT, and Application Development.\nLabs: Cloud Computing & DevOps (AWS, Docker), Cyber Security (Ethical Hacking, Digital Forensics), and Web & Mobile App Development.",
